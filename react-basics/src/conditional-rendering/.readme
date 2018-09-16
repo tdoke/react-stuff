@@ -1,0 +1,14 @@
+1] conditional rendering 
+const TempComponent = ({condition1, condition2}) => (
+  <div>
+    { condition1 && <component1 /> }  // render component1 only if condition1 is true
+    { condition2 ? <component1 />: <component2 />} //using ternary operator for rendering
+  </div>
+)
+
+2] prevent component from rendering:
+   if prop warning is not passed then dont render component
+   const Warning = ({warning}) => (
+     !warning ?  null : <h1> This is warning </h1>
+   )
+
