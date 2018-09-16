@@ -1,0 +1,7 @@
+.question {
+  width: 400px;
+}
+.question .question-label {
+  text-align: justify;
+  line-height: 32px;
+}
