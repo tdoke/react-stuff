@@ -1,5 +1,7 @@
 import React from 'react';
 import FlexView from 'react-flexview/lib';
+import QuizResultPieChart from './QuizResultPieChart';
+
 
 const calculateScore = (questions) => {
   const totalQuestions = questions.length;
@@ -21,6 +23,9 @@ export const QuizEnd = ({ questions }) => (
         <FlexView>
           <FlexView hAlignContent='left' marginRight={32} grow>Score</FlexView>
           <FlexView hAlignContent='right' marginLeft={32} basis={16}>{calculateScore(questions)}&nbsp;%</FlexView>
+        </FlexView>
+        <FlexView>
+          <QuizResultPieChart questions={questions} />
         </FlexView>
       </FlexView>
     </FlexView>
