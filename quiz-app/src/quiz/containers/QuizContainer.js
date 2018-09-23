@@ -27,7 +27,7 @@ const QuizContainer = ({
         }
         {
           (quiz.end) &&
-          <QuizEnd questions={questions}/>
+          <QuizEnd questions={questions} />
         }
         {
           quiz.start && (
@@ -36,29 +36,31 @@ const QuizContainer = ({
                 {...questions[quiz.currentQuestion]}
                 isLast={questions.length === (quiz.currentQuestion + 1)}
                 onAnswerRadioBtnClick={setAnswer}
-                onSubmitBtnClick={() => setCurrentQuestion(quiz.currentQuestion + 1)}
-                onLastAnswerSubmit={() => { 
+                onLastAnswerSubmit={() => {
                   startQuiz(false)
                   endQuiz(true)
                 }}
               />
-              <div className='btn-right-icon'>
-                <Button 
-                  variant="fab" 
-                  color="primary" 
-                  aria-label="right"
-                  onClick={() => setCurrentQuestion(quiz.currentQuestion + 1)}>
-                  <ChevronRight />
-                </Button>
-              </div>
+              {
+                !(questions.length === (quiz.currentQuestion + 1)) &&
+                <div className='btn-right-icon'>
+                  <Button
+                    variant="fab"
+                    color="primary"
+                    aria-label="right"
+                    onClick={() => setCurrentQuestion(quiz.currentQuestion + 1)}>
+                    <ChevronRight />
+                  </Button>
+                </div>
+              }
               <div className='btn-left-icon'>
-                <Button 
-                  variant="fab" 
-                  color="primary" 
+                <Button
+                  variant="fab"
+                  color="primary"
                   aria-label="left"
                   onClick={() =>
                     quiz.currentQuestion === 0 ?
-                    startQuiz(false) : setCurrentQuestion(quiz.currentQuestion - 1)}>
+                      startQuiz(false) : setCurrentQuestion(quiz.currentQuestion - 1)}>
                   <ChevronLeft />
                 </Button>
               </div>
