@@ -1,15 +1,14 @@
 import React from 'react'
 import { ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
+import FlexView from 'react-flexview/lib';
 import './QuizResultPieChart';
 
-// const data = [{ name: 'Group A', value: 400 }, { name: 'Group B', value: 300 }
-// ];
-//const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 const COLORS = {
   correct: '#00C49F',
   wrong: '#FF0000',
   skipped: '#FFBB28'
 }
+
 const formatToPieChartInput = (questions) => ([
   {
     name: 'Correct',
@@ -28,28 +27,30 @@ const formatToPieChartInput = (questions) => ([
 const QuizResultPieChart = ({ questions }) => {
   const data = formatToPieChartInput(questions)
   return (
-    <ResponsiveContainer
-    >
-      <PieChart
-        width={400}
-        height={400}
-      >
-        <Pie
-          data={data}
-          dataKey="value"
-          cx={120}
-          cy={200}
-          innerRadius={60}
-          outerRadius={80}
-          fill="#8884d8"
-          paddingAngle={5}
-        >
-          {
-            data.map((entry, index) => <Cell key={entry.name} fill={COLORS[entry.name.toLowerCase()]} />)
-          }
-        </Pie>
-      </PieChart>
-    </ResponsiveContainer>
+    <FlexView>
+      <FlexView hAlignContent='left'>
+        <PieChart
+          width={400}
+          height={300}>
+          <Pie
+            data={data}
+            dataKey="value"
+            cx={80}
+            cy={90}
+            innerRadius={60}
+            outerRadius={80}
+            fill="#8884d8"
+            paddingAngle={5}>
+            {
+              data.map((entry, index) => <Cell key={entry.name} fill={COLORS[entry.name.toLowerCase()]} />)
+            }
+          </Pie>
+        </PieChart>
+      </FlexView>
+      <FlexView hAlignContent='right'>
+      test
+      </FlexView>
+    </FlexView>
   )
 }
 
