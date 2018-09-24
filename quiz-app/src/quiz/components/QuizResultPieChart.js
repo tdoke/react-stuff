@@ -1,7 +1,7 @@
 import React from 'react'
 import { ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import FlexView from 'react-flexview/lib';
-import './QuizResultPieChart';
+import './QuizResultPieChart.css';
 
 const COLORS = {
   correct: '#00C49F',
@@ -27,30 +27,34 @@ const formatToPieChartInput = (questions) => ([
 const QuizResultPieChart = ({ questions }) => {
   const data = formatToPieChartInput(questions)
   return (
-    <FlexView>
-      <FlexView hAlignContent='left'>
-        <PieChart
-          width={400}
-          height={300}>
-          <Pie
-            data={data}
-            dataKey="value"
-            cx={80}
-            cy={90}
-            innerRadius={60}
-            outerRadius={80}
-            fill="#8884d8"
-            paddingAngle={5}>
-            {
-              data.map((entry, index) => <Cell key={entry.name} fill={COLORS[entry.name.toLowerCase()]} />)
-            }
-          </Pie>
-        </PieChart>
+    <div className='pie-chart-container'>
+      <FlexView>
+        <FlexView hAlignContent='left'>
+          <PieChart height={200} width={400}>
+            <Pie
+              data={data}
+              dataKey="value"
+              cx={90}
+              cy={90}
+              innerRadius={60}
+              outerRadius={80}
+              fill="#8884d8"
+              paddingAngle={5}>
+              {
+                data.map((entry, index) => <Cell key={entry.name} fill={COLORS[entry.name.toLowerCase()]} />)
+              }
+            </Pie>
+          </PieChart>
+        </FlexView>
+        <FlexView hAlignContent='right' marginTop={40} style={{width: '30%'}}>
+          <ul className='pie-chart-colors'>
+            <li><div className='color-box correct'></div>&nbsp;&nbsp;<span>correct</span></li>
+            <li><div className='color-box wrong'></div>&nbsp;&nbsp;<span>wrong</span></li>
+            <li><div className='color-box not-attempted'></div>&nbsp;&nbsp;<span>not-attempted</span></li>
+          </ul>
+        </FlexView>
       </FlexView>
-      <FlexView hAlignContent='right'>
-      test
-      </FlexView>
-    </FlexView>
+    </div>
   )
 }
 

@@ -15,13 +15,13 @@ export const QuizEnd = ({ questions }) => (
         <h1>Cricket Quiz Result</h1>
       </FlexView>
       <FlexView column marginTop={16}>
-        <FlexView marginBottom={16}>
-          <FlexView hAlignContent='left' marginRight={32} style={{ width: '50%' }}>Total Questions</FlexView>
-          <FlexView hAlignContent='right' marginLeft={32} style={{ width: '50%' }}>{questions.length}</FlexView>
+        <FlexView marginBottom={16} hAlignContent='center'>
+          <FlexView hAlignContent='left' marginRight={32} style={{ width: '40%' }}>Total Questions</FlexView>
+          <FlexView hAlignContent='right' marginLeft={32} style={{ width: '40%' }}>{questions.length}</FlexView>
         </FlexView>
-        <FlexView marginBottom={16}>
-          <FlexView hAlignContent='left' marginRight={32} style={{ width: '50%' }}>Score</FlexView>
-          <FlexView hAlignContent='right' marginLeft={32} style={{ width: '50%' }}>{calculateScore(questions)}&nbsp;%</FlexView>
+        <FlexView marginBottom={16} hAlignContent='center'>
+          <FlexView hAlignContent='left' marginRight={32} style={{ width: '40%' }}>Score</FlexView>
+          <FlexView hAlignContent='right' marginLeft={32} style={{ width: '40%' }}>{calculateScore(questions)}&nbsp;%</FlexView>
         </FlexView>
         <FlexView>
           <QuizResultPieChart questions={questions} />
