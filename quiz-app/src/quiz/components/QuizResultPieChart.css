@@ -4,6 +4,9 @@
 .pie-chart-container ul.pie-chart-colors {
   list-style: none;
 }
+.pie-chart-container .chart-stat {
+  font-size: 0.9em;
+}
 div.color-box {
   display: inline-block;
   width: 15px;

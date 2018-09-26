@@ -24,13 +24,21 @@ const formatToPieChartInput = (questions) => ([
   }
 ])
 
+const formatToPercentage = (questions) => (
+  {
+    correct: 100 * questions.filter(q => q.answer === q.usersAnswer).length / questions.length,
+    wrong: 100 * questions.filter(q => q.usersAnswer !== 0 && q.answer !== q.usersAnswer).length / questions.length,
+    skipped: 100 * questions.filter(q => q.usersAnswer === 0).length / questions.length
+  }
+)
 const QuizResultPieChart = ({ questions }) => {
   const data = formatToPieChartInput(questions)
+  const { correct, wrong, skipped } = formatToPercentage(questions)
   return (
     <div className='pie-chart-container'>
       <FlexView>
         <FlexView hAlignContent='left'>
-          <PieChart height={200} width={400}>
+          <PieChart height={200} width={300}>
             <Pie
               data={data}
               dataKey="value"
@@ -46,12 +54,22 @@ const QuizResultPieChart = ({ questions }) => {
             </Pie>
           </PieChart>
         </FlexView>
-        <FlexView hAlignContent='right' marginTop={40} style={{width: '30%'}}>
-          <ul className='pie-chart-colors'>
-            <li><div className='color-box correct'></div>&nbsp;&nbsp;<span>correct</span></li>
-            <li><div className='color-box wrong'></div>&nbsp;&nbsp;<span>wrong</span></li>
-            <li><div className='color-box not-attempted'></div>&nbsp;&nbsp;<span>not-attempted</span></li>
-          </ul>
+        <FlexView column hAlignContent='left' marginTop={40} className='chart-stat'>
+          <FlexView marginBottom={8} style={{ width: '100%' }}>
+            <FlexView hAlignContent='left' vAlignContent='center' marginRight={8} style={{ width: '20%' }}><div className='color-box correct'></div></FlexView>
+            <FlexView hAlignContent='left' vAlignContent='center' style={{ width: '60%' }} marginRight={16}>Correct</FlexView>
+            <FlexView hAlignContent='right' vAlignContent='center' style={{ width: '20%' }}>{correct}%</FlexView>
+          </FlexView>
+          <FlexView marginBottom={8} style={{ width: '100%' }}>
+            <FlexView hAlignContent='left' vAlignContent='center' marginRight={8} style={{ width: '20%' }}><div className='color-box wrong'></div></FlexView>
+            <FlexView hAlignContent='left' vAlignContent='center' style={{ width: '60%' }} marginRight={16}>Wrong</FlexView>
+            <FlexView hAlignContent='right' vAlignContent='center' style={{ width: '20%' }}>{wrong}%</FlexView>
+          </FlexView>
+          <FlexView marginBottom={8} style={{ width: '100%' }}>
+            <FlexView hAlignContent='left' vAlignContent='center' marginRight={8} style={{ width: '20%' }}><div className='color-box not-attempted'></div></FlexView>
+            <FlexView hAlignContent='left' vAlignContent='bottom' style={{ width: '60%' }} marginRight={16}>Not Attempted</FlexView>
+            <FlexView hAlignContent='right' vAlignContent='center' style={{ width: '20%' }}>{skipped}%</FlexView>
+          </FlexView>
         </FlexView>
       </FlexView>
     </div>
