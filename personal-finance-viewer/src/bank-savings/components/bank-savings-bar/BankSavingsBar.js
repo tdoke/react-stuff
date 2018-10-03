@@ -10,20 +10,36 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import AddIcon from '@material-ui/icons/Add';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 import { openBankDetailsDialog } from '../bank-detail-dialog/store';
 import BankDetailDialog from '../bank-detail-dialog/BankDetailDialog';
 import './BankSavingsBar.css';
 
-const BankSavingsBar = ({ openBankDetailsDialog }) => (
+const getTotalBankAmount = (bankSavings) =>
+  bankSavings.reduce((a, b) => Number(a) + Number(b.amount), 0);
+const BankSavingsBar = ({ openBankDetailsDialog, bankSavings }) => (
   <div>
     <ExpansionPanel className="row banks-savings-bar">
       <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
         <FlexView style={{ width: '100%' }}>
           <FlexView style={{ width: '50%' }} hAlignContent='left'>Bank Savings</FlexView>
-          <FlexView style={{ width: '50%' }} hAlignContent='right'>0</FlexView>
+          <FlexView style={{ width: '50%' }} hAlignContent='right'>{getTotalBankAmount(bankSavings)}</FlexView>
         </FlexView>
       </ExpansionPanelSummary>
       <ExpansionPanelDetails>
+        <FlexView style={{ width: '100%' }} hAlignContent="left">
+          <List>
+            {
+              bankSavings.map((bankSaving, index) => (
+                <ListItem key={index} button>
+                  <ListItemText primary={bankSaving.bankName.toUpperCase()} secondary={bankSaving.amount} />
+                </ListItem>
+              ))
+            }
+          </List>
+        </FlexView>
       </ExpansionPanelDetails>
       <Divider />
       <ExpansionPanelActions>
@@ -35,8 +51,10 @@ const BankSavingsBar = ({ openBankDetailsDialog }) => (
     <BankDetailDialog />
   </div>
 )
-
+const mapStateToProps = (state) => ({
+  bankSavings: state.bankSavings
+})
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators({ openBankDetailsDialog }, dispatch)
 
-export default connect(null, mapDispatchToProps)(BankSavingsBar);
+export default connect(mapStateToProps, mapDispatchToProps)(BankSavingsBar);
