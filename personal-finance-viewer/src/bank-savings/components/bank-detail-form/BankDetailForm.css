@@ -1,0 +1,10 @@
+.bank-detail-form-container {
+  position: relative;
+  box-sizing: border-box;
+}
+.bank-detail-form-container .form-btn-container {
+  position: absolute;
+  z-index: 9999;
+  bottom: 8px;
+  right: 8px;
+}
