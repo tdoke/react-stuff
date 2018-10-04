@@ -17,6 +17,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { openBankDetailsDialog } from '../bank-detail-dialog/store';
 import BankDetailDialog from '../bank-detail-dialog/BankDetailDialog';
+import { BankSavingsPieChart } from '../bank-savings-pie-chart/BankSavingsPieChart';
 import './BankSavingsBar.css';
 
 const getTotalBankAmount = (bankSavings) =>
@@ -31,17 +32,20 @@ const BankSavingsBar = ({ openBankDetailsDialog, bankSavings }) => (
         </FlexView>
       </ExpansionPanelSummary>
       <ExpansionPanelDetails>
-        <FlexView style={{ width: '100%' }} hAlignContent="left">
+        <FlexView style={{ width: '50%' }} hAlignContent="left">
           <List>
             {
               bankSavings.map((bankSaving, index) => (
                 <ListItem key={index}>
-                  <AccountCircle style={{ color: bankSaving.color, width: '48px', height:'48px' }} />
+                  <AccountCircle style={{ color: bankSaving.color, width: '48px', height: '48px' }} />
                   <ListItemText primary={bankSaving.bankName.toUpperCase()} secondary={bankSaving.amount} />
                 </ListItem>
               ))
             }
           </List>
+        </FlexView>
+        <FlexView style={{ width: '50%' }} hAlignContent="right">
+          <BankSavingsPieChart bankSavings={bankSavings} />
         </FlexView>
       </ExpansionPanelDetails>
       <Divider />
