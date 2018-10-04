@@ -11,7 +11,9 @@ import { closeBankDetailsDialog } from './store';
 import { createBankSaving } from '../../store/actions';
 import BankDetailForm from '../bank-detail-form/BankDetailForm';
 
-const BankDetailDialog = ({ open, closeBankDetailsDialog, createBankSaving }) => (
+const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+
+const BankDetailDialog = ({ open, bankSavingsLength, closeBankDetailsDialog, createBankSaving }) => (
   <div>
     <Dialog
       open={open}
@@ -22,31 +24,18 @@ const BankDetailDialog = ({ open, closeBankDetailsDialog, createBankSaving }) =>
         <BankDetailForm
           cancelInputs={closeBankDetailsDialog}
           submitInputs={(values) => {
-            console.log(values)
-            createBankSaving(values)
+            createBankSaving({...values, color: COLORS[bankSavingsLength]})
             closeBankDetailsDialog()
           }}
         />
       </DialogContent>
-      <DialogActions>
-        {/* <Button onClick={closeBankDetailsDialog} color="primary">
-          Cancel
-        </Button>
-        <Button onClick={() => {
-          console.log(getFormValues("BankDetailForm").values)
-          createBankSaving(getFormValues("BankDetailForm").values)
-          closeBankDetailsDialog()
-        }}
-          color="primary">
-          Add
-        </Button> */}
-      </DialogActions>
     </Dialog>
   </div>
 )
 
 const mapStateToProps = (state) => ({
-  open: state.bankDetailsDialog.open
+  open: state.bankDetailsDialog.open,
+  bankSavingsLength: state.bankSavings.length
 })
 
 const mapDispatchToProps = (dispatch) =>

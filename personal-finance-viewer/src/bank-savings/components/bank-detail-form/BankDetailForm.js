@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import FlexView from 'react-flexview/lib';
 import { Field, reduxForm } from 'redux-form'
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+
 
 const renderTextField = ({
   input,
@@ -18,43 +19,47 @@ const renderTextField = ({
     />
   )
 
-const BankDetailForm = ({
-cancelInputs,
-submitInputs,
-handleSubmit
-}) => (
-    <div className='bank-detail-form-container'>
-      <form onSubmit={handleSubmit(submitInputs)}>
-        <FlexView>
-          <FlexView marginRight={16}>
-            <Field
-              name="bankName"
-              component={renderTextField}
-              label="Bank"
-            />
-          </FlexView>
+class BankDetailForm extends PureComponent {
+  render() {
+    const {
+      cancelInputs,
+      submitInputs,
+      handleSubmit
+    } = this.props;
+    return (
+      <div className='bank-detail-form-container'>
+        <form onSubmit={handleSubmit(submitInputs)}>
           <FlexView>
-            <Field
-              name="amount"
-              component={renderTextField}
-              label="Amount"
-            />
+            <FlexView marginRight={16}>
+              <Field
+                name="bankName"
+                component={renderTextField}
+                label="Bank"
+              />
+            </FlexView>
+            <FlexView>
+              <Field
+                name="amount"
+                component={renderTextField}
+                label="Amount"
+              />
+            </FlexView>
           </FlexView>
-        </FlexView>
-        <FlexView hAlignContent="right" marginTop={40}>
-          <FlexView marginRight={16}>
-            <Button color="primary" onClick={cancelInputs}>
-              Cancel
-            </Button>
+          <FlexView hAlignContent="right" marginTop={40}>
+            <FlexView marginRight={16}>
+              <Button color="primary" onClick={cancelInputs}>
+                Cancel
+                </Button>
+            </FlexView>
+            <FlexView>
+              <Button type="submit" color="primary">
+                Add
+                </Button>
+            </FlexView>
           </FlexView>
-          <FlexView>
-            <Button type="submit" color="primary">
-              Add
-            </Button>
-          </FlexView>
-        </FlexView>
-      </form>
-    </div>
-  )
-
+        </form>
+      </div>
+    )
+  }
+}
 export default reduxForm({ form: 'BankDetailForm' })(BankDetailForm)  

@@ -9,7 +9,9 @@ import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
+import Avatar from '@material-ui/core/Avatar';
 import AddIcon from '@material-ui/icons/Add';
+import AccountCircle from '@material-ui/icons/AccountCircle';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -33,7 +35,8 @@ const BankSavingsBar = ({ openBankDetailsDialog, bankSavings }) => (
           <List>
             {
               bankSavings.map((bankSaving, index) => (
-                <ListItem key={index} button>
+                <ListItem key={index}>
+                  <AccountCircle style={{ color: bankSaving.color, width: '48px', height:'48px' }} />
                   <ListItemText primary={bankSaving.bankName.toUpperCase()} secondary={bankSaving.amount} />
                 </ListItem>
               ))
