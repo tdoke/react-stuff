@@ -22,13 +22,13 @@ import './BankSavingsBar.css';
 
 const getTotalBankAmount = (bankSavings) =>
   bankSavings.reduce((a, b) => Number(a) + Number(b.amount), 0);
-const BankSavingsBar = ({ openBankDetailsDialog, bankSavings }) => (
+export const BankSavingsBar = ({ openBankDetailsDialog, bankSavings }) => (
   <div>
     <ExpansionPanel className="row banks-savings-bar">
       <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
         <FlexView style={{ width: '100%' }}>
-          <FlexView style={{ width: '50%' }} hAlignContent='left'>Bank Savings</FlexView>
-          <FlexView style={{ width: '50%' }} hAlignContent='right'>{getTotalBankAmount(bankSavings)}</FlexView>
+          <FlexView style={{ width: '50%' }} hAlignContent='left'><span id="bank-savings-label">Bank Savings</span></FlexView>
+          <FlexView style={{ width: '50%' }} hAlignContent='right'><span id="bank-savings-total">{getTotalBankAmount(bankSavings)}</span></FlexView>
         </FlexView>
       </ExpansionPanelSummary>
       <ExpansionPanelDetails>
@@ -50,7 +50,7 @@ const BankSavingsBar = ({ openBankDetailsDialog, bankSavings }) => (
       </ExpansionPanelDetails>
       <Divider />
       <ExpansionPanelActions>
-        <Button variant="fab" color="primary" mini aria-label="Add" onClick={openBankDetailsDialog}>
+        <Button id="btn-open-bank-detail-dialog" variant="fab" color="primary" mini aria-label="Add" onClick={openBankDetailsDialog}>
           <AddIcon />
         </Button>
       </ExpansionPanelActions>
