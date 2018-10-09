@@ -21,7 +21,9 @@ import { BankSavingsPieChart } from '../bank-savings-pie-chart/BankSavingsPieCha
 import './BankSavingsBar.css';
 
 const getTotalBankAmount = (bankSavings) =>
-  bankSavings.reduce((a, b) => Number(a) + Number(b.amount), 0);
+  bankSavings.reduce((a, b) => Number(a) + Number(getSumofAccounts(b.accounts)), 0);
+const getSumofAccounts = (accounts) =>
+  accounts.reduce((a, b) => Number(a) + Number(b.amount), 0);
 export const BankSavingsBar = ({ openBankDetailsDialog, bankSavings }) => (
   <div>
     <ExpansionPanel className="row banks-savings-bar">
@@ -38,7 +40,7 @@ export const BankSavingsBar = ({ openBankDetailsDialog, bankSavings }) => (
               bankSavings.map((bankSaving, index) => (
                 <ListItem key={index}>
                   <AccountCircle style={{ color: bankSaving.color, width: '48px', height: '48px' }} />
-                  <ListItemText primary={bankSaving.bankName.toUpperCase()} secondary={bankSaving.amount} />
+                  <ListItemText primary={bankSaving.bankName.toUpperCase()} secondary={getSumofAccounts(bankSaving.accounts)} />
                 </ListItem>
               ))
             }

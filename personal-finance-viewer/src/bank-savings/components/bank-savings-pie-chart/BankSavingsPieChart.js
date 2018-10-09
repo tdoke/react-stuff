@@ -1,9 +1,12 @@
 import React from 'react';
 import { PieChart, Pie, Cell } from 'recharts';
 
+const getSumofAccounts = (accounts) =>
+  accounts.reduce((a, b) => Number(a) + Number(b.amount), 0);
+
 const formatToPieChartInput = (bankSavings) => bankSavings.map(bankSaving => ({
   name: bankSaving.bankName,
-  value: Number(bankSaving.amount),
+  value: Number(getSumofAccounts(bankSaving.accounts)),
   color: bankSaving.color
 }))
 
