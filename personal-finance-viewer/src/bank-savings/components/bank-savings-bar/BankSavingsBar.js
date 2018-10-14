@@ -24,6 +24,8 @@ const getTotalBankAmount = (bankSavings) =>
   bankSavings.reduce((a, b) => Number(a) + Number(getSumofAccounts(b.accounts)), 0);
 const getSumofAccounts = (accounts) =>
   accounts.reduce((a, b) => Number(a) + Number(b.amount), 0);
+const getAccountsSummary = (accounts) => `${accounts.length} accounts, total cash ${getSumofAccounts(accounts)}`;
+
 export const BankSavingsBar = ({ openBankDetailsDialog, bankSavings }) => (
   <div>
     <ExpansionPanel className="row banks-savings-bar">
@@ -38,9 +40,9 @@ export const BankSavingsBar = ({ openBankDetailsDialog, bankSavings }) => (
           <List>
             {
               bankSavings.map((bankSaving, index) => (
-                <ListItem key={index}>
+                <ListItem key={index} button>
                   <AccountCircle style={{ color: bankSaving.color, width: '48px', height: '48px' }} />
-                  <ListItemText primary={bankSaving.bankName.toUpperCase()} secondary={getSumofAccounts(bankSaving.accounts)} />
+                  <ListItemText primary={bankSaving.bankName.toUpperCase()} secondary={getAccountsSummary(bankSaving.accounts)} />
                 </ListItem>
               ))
             }
