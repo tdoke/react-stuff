@@ -10,6 +10,10 @@ export const createBankSaving = (bankSaving) => ({
   payload: bankSaving
 })
 
+export const updateBankSaving = (bankSaving) => ({
+  type: actionTypes.UPDATE_BANK_SAVING,
+  payload: bankSaving
+})
 
 
 

@@ -1,19 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getFormValues } from 'redux-form';
-import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { closeBankDetailsDialog } from './store';
-import { createBankSaving } from '../../store/actions';
+import { createBankSaving, updateBankSaving } from '../../store/actions';
 import BankDetailForm from '../bank-detail-form/BankDetailForm';
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
-const BankDetailDialog = ({ open, bankSavingsLength, closeBankDetailsDialog, createBankSaving }) => (
+const BankDetailDialog = ({ open, bankSaving, bankSavingsLength, closeBankDetailsDialog, createBankSaving, updateBankSaving }) => (
   <div>
     <Dialog
       open={open}
@@ -22,9 +19,12 @@ const BankDetailDialog = ({ open, bankSavingsLength, closeBankDetailsDialog, cre
       <DialogTitle id="form-dialog-title">Bank Details</DialogTitle>
       <DialogContent>
         <BankDetailForm
+          initialValues={bankSaving}
           cancelInputs={closeBankDetailsDialog}
           submitInputs={(values) => {
-            createBankSaving({...values, color: COLORS[bankSavingsLength]})
+            values.id ?
+              updateBankSaving(values) :
+              createBankSaving({ ...values, color: COLORS[bankSavingsLength], id: bankSavingsLength + 1 })
             closeBankDetailsDialog()
           }}
         />
@@ -35,10 +35,11 @@ const BankDetailDialog = ({ open, bankSavingsLength, closeBankDetailsDialog, cre
 
 const mapStateToProps = (state) => ({
   open: state.bankDetailsDialog.open,
+  bankSaving: state.bankDetailsDialog.bankSaving,
   bankSavingsLength: state.bankSavings.length
 })
 
 const mapDispatchToProps = (dispatch) =>
-  bindActionCreators({ closeBankDetailsDialog, createBankSaving }, dispatch)
+  bindActionCreators({ closeBankDetailsDialog, createBankSaving, updateBankSaving }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(BankDetailDialog);
