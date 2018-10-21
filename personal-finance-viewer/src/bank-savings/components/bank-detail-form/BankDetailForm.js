@@ -1,4 +1,6 @@
 import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
+import { getFormValues } from 'redux-form';
 import FlexView from 'react-flexview/lib';
 import { Field, FieldArray, reduxForm } from 'redux-form'
 import TextField from '@material-ui/core/TextField';
@@ -6,6 +8,30 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import AddCircle from '@material-ui/icons/AddCircle';
 import RemoveCircle from '@material-ui/icons/RemoveCircle';
+import Select from '@material-ui/core/Select';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+import MenuItem from '@material-ui/core/MenuItem';
+
+const renderSelectField = ({
+  input,//field.input not ui input element
+  label,
+  meta: { touched, error },
+  children,
+  ...custom
+}) => (
+    <FormControl error={touched && error} {...custom}>
+      <InputLabel>{label}</InputLabel>
+      <Select
+        {...input}
+        onChange={(value) => {
+          input.onChange(value);
+        }}
+        children={children}
+      />
+    </FormControl>
+  )
+
 
 
 
@@ -17,13 +43,13 @@ const renderTextField = ({
 }) => (
     <TextField
       label={label}
-      errorText={touched && error}
+      error={touched && error}
       {...input}
       {...custom}
     />
   )
 
-const renderAccounts = ({ fields, meta: { error } }) =>
+const renderAccounts = ({ fields, meta: { error }, bankDetailFormValues }) =>
 
   <React.Fragment>
     <FlexView column>
@@ -47,6 +73,29 @@ const renderAccounts = ({ fields, meta: { error } }) =>
             </FlexView>
             <FlexView marginRight={16}>
               <Field
+                name={`${account}.type`}
+                component={renderSelectField}
+                label="Account"
+              >
+                <MenuItem value="SAVING">SAVING</MenuItem>
+                <MenuItem value="FIXED">FIXED</MenuItem>
+              </Field>
+            </FlexView>
+            {
+              bankDetailFormValues && 
+              bankDetailFormValues.accounts[index] && 
+              bankDetailFormValues.accounts[index].type === "FIXED" && (
+                <FlexView marginRight={16}>
+                  <Field
+                    name={`${account}.interestRate`}
+                    component={renderTextField}
+                    label="Interest Rate"
+                  />
+                </FlexView>
+              )
+            }
+            <FlexView marginRight={16}>
+              <Field
                 name={`${account}.amount`}
                 component={renderTextField}
                 label="Amount"
@@ -65,6 +114,7 @@ const renderAccounts = ({ fields, meta: { error } }) =>
 class BankDetailForm extends PureComponent {
   render() {
     const {
+      bankDetailFormValues,
       cancelInputs,
       submitInputs,
       handleSubmit
@@ -81,7 +131,7 @@ class BankDetailForm extends PureComponent {
               />
             </FlexView>
           </FlexView>
-          <FieldArray name="accounts" component={renderAccounts} />
+          <FieldArray name="accounts" component={renderAccounts} props={{ bankDetailFormValues: bankDetailFormValues }} />
           <FlexView hAlignContent="right" marginTop={40}>
             <FlexView marginRight={16}>
               <Button color="primary" onClick={cancelInputs}>
@@ -99,4 +149,7 @@ class BankDetailForm extends PureComponent {
     )
   }
 }
-export default reduxForm({ form: 'BankDetailForm' })(BankDetailForm)  
+const mapStateToProps = (state) => ({
+  bankDetailFormValues: getFormValues('BankDetailForm')(state)
+})
+export default connect(mapStateToProps)(reduxForm({ form: 'BankDetailForm' })(BankDetailForm))  
