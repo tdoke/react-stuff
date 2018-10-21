@@ -12,7 +12,7 @@ import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import MenuItem from '@material-ui/core/MenuItem';
-
+import './BankDetailForm.css';
 const renderSelectField = ({
   input,//field.input not ui input element
   label,
@@ -20,7 +20,7 @@ const renderSelectField = ({
   children,
   ...custom
 }) => (
-    <FormControl error={touched && error} {...custom}>
+    <FormControl error={touched && error} {...custom} className="account-type-select-cont">
       <InputLabel>{label}</InputLabel>
       <Select
         {...input}
@@ -64,13 +64,14 @@ const renderAccounts = ({ fields, meta: { error }, bankDetailFormValues }) =>
       {
         fields.map((account, index) =>
           <FlexView key={index} vAlignContent="center" marginTop={16}>
-            <FlexView marginRight={16}>
+            <FlexView marginRight={16} className="amount-input-cont">
               <Field
                 name={`${account}.firstName`}
                 component={renderTextField}
                 label="Account"
               />
             </FlexView>
+            <FlexView className="account-type-input-cont">
             <FlexView marginRight={16}>
               <Field
                 name={`${account}.type`}
@@ -85,7 +86,7 @@ const renderAccounts = ({ fields, meta: { error }, bankDetailFormValues }) =>
               bankDetailFormValues && 
               bankDetailFormValues.accounts[index] && 
               bankDetailFormValues.accounts[index].type === "FIXED" && (
-                <FlexView marginRight={16}>
+                <FlexView marginRight={16} className="interest-rate-input">
                   <Field
                     name={`${account}.interestRate`}
                     component={renderTextField}
@@ -94,7 +95,8 @@ const renderAccounts = ({ fields, meta: { error }, bankDetailFormValues }) =>
                 </FlexView>
               )
             }
-            <FlexView marginRight={16}>
+            </FlexView>
+            <FlexView marginRight={16} className="amount-input-cont">
               <Field
                 name={`${account}.amount`}
                 component={renderTextField}

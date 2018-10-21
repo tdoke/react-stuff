@@ -2,9 +2,24 @@
   position: relative;
   box-sizing: border-box;
 }
-.bank-detail-form-container .form-btn-container {
-  position: absolute;
-  z-index: 9999;
-  bottom: 8px;
-  right: 8px;
+.account-type-full {
+  width: 150px;
+}
+.account-type-half {
+  width: 80px;
+}
+.account-type-input-cont {
+  width: 50%;
+}
+.account-input-cont {
+  width: 20%;
+}
+.amount-input-cont {
+  width: 20%;
+}
+.interest-rate-input {
+  width: 50%;
+}
+.account-type-select-cont {
+  width: 300px;
 }
