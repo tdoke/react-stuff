@@ -17,6 +17,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import { openBankDetailsDialog } from '../bank-detail-dialog/store';
 import BankDetailDialog from '../bank-detail-dialog/BankDetailDialog';
 import { BankSavingsPieChart } from '../bank-savings-pie-chart/BankSavingsPieChart';
+import { getTotalAmountByBank, getTotalAmountByBankByAccountType } from '../bank-savings-pie-chart/InputFormatter';
 import './BankSavingsBar.css';
 
 const getTotalBankAmount = (bankSavings) =>
@@ -35,7 +36,7 @@ export const BankSavingsBar = ({ openBankDetailsDialog, bankSavings }) => (
         </FlexView>
       </ExpansionPanelSummary>
       <ExpansionPanelDetails>
-        <FlexView style={{ width: '50%' }} hAlignContent="left">
+        <FlexView style={{ width: '30%' }} hAlignContent="left">
           <List>
             {
               bankSavings.map((bankSaving, index) => (
@@ -47,8 +48,16 @@ export const BankSavingsBar = ({ openBankDetailsDialog, bankSavings }) => (
             }
           </List>
         </FlexView>
-        <FlexView style={{ width: '50%' }} hAlignContent="right">
-          <BankSavingsPieChart bankSavings={bankSavings} />
+        <FlexView style={{ width: '70%' }} hAlignContent="right">
+          <FlexView marginRight={24}>
+            <BankSavingsPieChart inputData={getTotalAmountByBankByAccountType(bankSavings, "SAVING")} labelText="Saving Amount" />
+          </FlexView>
+          <FlexView marginRight={24}>
+            <BankSavingsPieChart inputData={getTotalAmountByBankByAccountType(bankSavings, "FIXED")} labelText="FD Amount" />
+          </FlexView>
+          <FlexView marginRight={24}>
+            <BankSavingsPieChart inputData={getTotalAmountByBank(bankSavings)} labelText="Amount" />
+          </FlexView>
         </FlexView>
       </ExpansionPanelDetails>
       <Divider />
