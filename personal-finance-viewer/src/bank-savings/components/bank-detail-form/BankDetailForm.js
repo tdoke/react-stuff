@@ -72,29 +72,38 @@ const renderAccounts = ({ fields, meta: { error }, bankDetailFormValues }) =>
               />
             </FlexView>
             <FlexView className="account-type-input-cont">
-            <FlexView marginRight={16}>
-              <Field
-                name={`${account}.type`}
-                component={renderSelectField}
-                label="Account"
-              >
-                <MenuItem value="SAVING">SAVING</MenuItem>
-                <MenuItem value="FIXED">FIXED</MenuItem>
-              </Field>
-            </FlexView>
-            {
-              bankDetailFormValues && 
-              bankDetailFormValues.accounts[index] && 
-              bankDetailFormValues.accounts[index].type === "FIXED" && (
-                <FlexView marginRight={16} className="interest-rate-input">
-                  <Field
-                    name={`${account}.interestRate`}
-                    component={renderTextField}
-                    label="Interest Rate"
-                  />
-                </FlexView>
-              )
-            }
+              <FlexView marginRight={16}>
+                <Field
+                  name={`${account}.type`}
+                  component={renderSelectField}
+                  label="Account"
+                >
+                  <MenuItem value="SAVING">SAVING</MenuItem>
+                  <MenuItem value="FIXED">FIXED</MenuItem>
+                </Field>
+              </FlexView>
+              {
+                bankDetailFormValues &&
+                bankDetailFormValues.accounts[index] &&
+                bankDetailFormValues.accounts[index].type === "FIXED" && (
+                  <React.Fragment>
+                    <FlexView marginRight={16} className="interest-rate-input">
+                      <Field
+                        name={`${account}.interestRate`}
+                        component={renderTextField}
+                        label="Interest Rate"
+                      />
+                    </FlexView>
+                    <FlexView marginRight={16} className="interest-rate-input">
+                      <Field
+                        name={`${account}.years`}
+                        component={renderTextField}
+                        label="Years"
+                      />
+                    </FlexView>
+                  </React.Fragment>
+                )
+              }
             </FlexView>
             <FlexView marginRight={16} className="amount-input-cont">
               <Field
