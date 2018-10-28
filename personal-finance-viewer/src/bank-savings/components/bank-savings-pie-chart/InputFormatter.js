@@ -13,7 +13,7 @@ export const getTotalAmountByBankByAccountType = (bankSavings, accountType) => b
   color: bankSaving.color
 }))
 
-const getFixedDepositsAccounts = (bankSaving) => bankSaving.accounts.filter(acc => acc.type = "FIXED");
+const getFixedDepositsAccounts = (bankSaving) => bankSaving.accounts.filter(acc => acc.type === "FIXED");
 const getMaturedCompundedAmount = (yearlyRate, years, startingAmount) =>
   (Number(startingAmount) * Math.pow((1 + (Number(yearlyRate) / (1 * 100))), (1 * Number(years))));
 

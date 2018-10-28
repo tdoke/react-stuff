@@ -17,7 +17,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import { openBankDetailsDialog } from '../bank-detail-dialog/store';
 import BankDetailDialog from '../bank-detail-dialog/BankDetailDialog';
 import { BankSavingsPieChart } from '../bank-savings-pie-chart/BankSavingsPieChart';
-import { getTotalAmountByBank, getTotalAmountByBankByAccountType } from '../bank-savings-pie-chart/InputFormatter';
+import { getTotalAmountByBank, getTotalAmountByBankByAccountType, getFDMaturedAmounts } from '../bank-savings-pie-chart/InputFormatter';
 import './BankSavingsBar.css';
 
 const getTotalBankAmount = (bankSavings) =>
@@ -54,6 +54,9 @@ export const BankSavingsBar = ({ openBankDetailsDialog, bankSavings }) => (
           </FlexView>
           <FlexView marginRight={24}>
             <BankSavingsPieChart inputData={getTotalAmountByBankByAccountType(bankSavings, "FIXED")} labelText="FD Amount" />
+          </FlexView>
+          <FlexView marginRight={24}>
+            <BankSavingsPieChart inputData={getFDMaturedAmounts(bankSavings)} labelText="FD Mature Amount" />
           </FlexView>
           <FlexView marginRight={24}>
             <BankSavingsPieChart inputData={getTotalAmountByBank(bankSavings)} labelText="Amount" />
