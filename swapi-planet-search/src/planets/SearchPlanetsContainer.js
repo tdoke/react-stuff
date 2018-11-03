@@ -4,20 +4,27 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { searchPlanet } from './store/actions'
 import SearchPlanetBar from './components/search-planet-bar/SearchPlanetBar'
-
-const SearchPlanetsContainer = ({ searchPlanet }) => (
+import PlanetList from './components/planet-list/PlanetList'
+ 
+const SearchPlanetsContainer = ({ searchPlanet, searchPlanetsResult }) => (
   <div>
-    <FlexView height={200}>
+    <FlexView column marginTop={56}>
       <FlexView hAlignContent="center" vAlignContent="center" height='100%' width='100%'>
         <SearchPlanetBar onSearchInputChange={searchPlanet} />
+      </FlexView>
+      <FlexView marginTop={32} hAlignContent="center" vAlignContent="center" height='100%' width='100%'>
+        <PlanetList planets={searchPlanetsResult} />
       </FlexView>
     </FlexView>
   </div>
 )
 
+const mapStateToProps = (state) => ({
+  searchPlanetsResult: state.planets.searchPlanetResults
+})
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators({ searchPlanet }, dispatch)
 
-export default connect(null, mapDispatchToProps)(SearchPlanetsContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchPlanetsContainer);
 
 
