@@ -18,10 +18,10 @@ const renderTextField = ({
       {...custom}
     />
   )
- 
+
 const LoginForm = ({
-  handleSubmit,
-  onLoginBtnClick
+  onLoginBtnClick,
+  handleSubmit
 }) => (
     <div className='login-form-container'>
       <form onSubmit={handleSubmit(onLoginBtnClick)}>
@@ -38,6 +38,8 @@ const LoginForm = ({
               name="password"
               component={renderTextField}
               label="Password"
+              type="password"
+              value="19BBY"
             />
           </FlexView>
           <FlexView>
