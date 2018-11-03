@@ -11,15 +11,23 @@ const renderTextField = ({
   meta: { touched, error },
   ...custom
 }) => (
+  <div>
     <TextField
       label={label}
-      error={touched && error}
+      error={touched && error && error.length>0}
       {...input}
       {...custom}
     />
+    {touched && (error && <div className="text-field-error">{error}</div>)}
+  </div>
   )
+  
+const required = value => value ? undefined : 'Required'
 
 const LoginForm = ({
+  submitting,
+  pristine,
+  invalid,
   onLoginBtnClick,
   handleSubmit
 }) => (
@@ -31,6 +39,10 @@ const LoginForm = ({
               name="userName"
               component={renderTextField}
               label="userName"
+              custom={{
+                required: true
+              }}
+              validate={[required]}
             />
           </FlexView>
           <FlexView>
@@ -39,11 +51,11 @@ const LoginForm = ({
               component={renderTextField}
               label="Password"
               type="password"
-              value="19BBY"
+              validate={[required]}              
             />
           </FlexView>
           <FlexView>
-            <Button type="submit" color="primary">
+            <Button type="submit" color="primary" disabled={pristine || submitting || invalid}>
               Login
           </Button>
           </FlexView>
