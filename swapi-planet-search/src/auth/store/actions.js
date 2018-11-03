@@ -5,16 +5,19 @@ export const actionTypes = {
   LOGIN_FAILED: "LOGIN_FAILED"
 }
 
-export const login = ({ userName, password }) => {
+export const login = ({ userName, password }, successCallBack) => {
   return dispatch => {
     dispatch(loginStart())
     axios
       .get(`https://swapi.co/api/people/?search=${userName}`)
       .then(response => response.data)
       .then(personData => {
-        (personData.count === 1 && personData.results[0].birth_year === password) ?
-          dispatch(loginSuccess(personData.results[0])) : 
+        if(personData.count === 1 && personData.results[0].birth_year === password) {
+          dispatch(loginSuccess(personData.results[0]))
+          successCallBack()
+        } else { 
           dispatch(loginFailed("invalid credentials"))
+        }
       })
       .catch(error => dispatch(loginFailed(error)))
   }

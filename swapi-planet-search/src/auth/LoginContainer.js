@@ -5,9 +5,9 @@ import { login } from './store/actions'
 import LoginForm from './components/LoginForm'
 
 
-const LoginContainer = ({ login }) => (
+const LoginContainer = ({ login, history }) => (
   <div>
-    <LoginForm onLoginBtnClick={login} />
+    <LoginForm onLoginBtnClick={values => login(values, () => history.push("/planets/search"))} />
   </div>
 )
 
@@ -15,4 +15,4 @@ const LoginContainer = ({ login }) => (
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators({ login }, dispatch)
 
-  export default connect(null, mapDispatchToProps)(LoginContainer);
+export default connect(null, mapDispatchToProps)(LoginContainer);
