@@ -11,18 +11,18 @@ const renderTextField = ({
   meta: { touched, error },
   ...custom
 }) => (
-  <div>
-    <TextField
-      label={label}
-      error={touched && error && error.length>0}
-      required={true}
-      {...input}
-      {...custom}
-    />
-    {touched && (error && <div className="text-field-error">{error}</div>)}
-  </div>
+    <div>
+      <TextField
+        label={label}
+        error={touched && error && error.length > 0}
+        required={true}
+        {...input}
+        {...custom}
+      />
+      {touched && (error && <div className="text-field-error">{error}</div>)}
+    </div>
   )
-  
+
 const required = value => value ? undefined : 'Required'
 
 const LoginForm = ({
@@ -34,28 +34,31 @@ const LoginForm = ({
 }) => (
     <div className='login-form-container'>
       <form onSubmit={handleSubmit(onLoginBtnClick)}>
-        <FlexView>
-          <FlexView>
+        <FlexView column>
+          <FlexView marginTop={16} marginBottom={32}>
             <Field
               name="userName"
               component={renderTextField}
-              label="userName"
+              label="UserName"
+              type="text"
               validate={[required]}
+              {...{ className: 'login-input-width' }}
             />
           </FlexView>
-          <FlexView>
+          <FlexView marginBottom={64}>
             <Field
               name="password"
               component={renderTextField}
               label="Password"
-              type="password"
-              validate={[required]}              
+              type="Password"
+              validate={[required]}
+              {...{ className: 'login-input-width' }}
             />
           </FlexView>
-          <FlexView>
-            <Button type="submit" color="primary" disabled={pristine || submitting || invalid}>
+          <FlexView hAlignContent="right"  vAlignContent="bottom" marginBottom={16}>
+            <Button type="submit" variant="outlined" color="primary" disabled={pristine || submitting || invalid}>
               Login
-          </Button>
+            </Button>
           </FlexView>
         </FlexView>
       </form>
