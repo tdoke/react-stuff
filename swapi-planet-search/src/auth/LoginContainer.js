@@ -1,6 +1,7 @@
 import React from 'react'
+import LoginForm from './components/LoginForm'
 export const LoginContainer = () => (
   <div>
-    <h1>LoginContainer</h1>
+    <LoginForm onLoginBtnClick={values => console.log(values)}/>
   </div>
   )
