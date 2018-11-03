@@ -4,12 +4,12 @@ import './SearchPlanetBar.css'
 
 const onChangeText = (event) => console.log(event.target.value)
 
-const SearchPlanetBar = () => (
+const SearchPlanetBar = ({ onSearchInputChange }) => (
   <div className="search-planet-bar-container">
     <TextField
       label="Planet"
       fullWidth
-      onChange={onChangeText}
+      onChange={(event) => onSearchInputChange(event.target.value)}
     />
   </div>
 )

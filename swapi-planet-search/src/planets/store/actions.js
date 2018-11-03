@@ -15,6 +15,7 @@ const searchPlanetSuccess = planets => ({
 const searchPlanetFailed = () => ({
   type: actionTypes.SEARCH_PLANET_FAILED
 })
+const sortByPopultaion = (data) => data.sort((item1, item2) => item1.population - item2.population)
 
 export const searchPlanet = name => {
   return dispatch => {
@@ -23,11 +24,8 @@ export const searchPlanet = name => {
       .get(`https://swapi.co/api/planets/?search=${name}`)
       .then(response => response.data)
       .then(data => {
-        //dispatch(searchPlanetSuccess(data.results))
-        console.log(sortfun(data.results))
+        dispatch(searchPlanetSuccess(sortByPopultaion(data.results)))
       })
       .catch(error => dispatch(searchPlanetFailed(error)))
   }
 }
-
-const sortfun = (data) => data.sort((item1, item2) => item1.population - item2.population)
