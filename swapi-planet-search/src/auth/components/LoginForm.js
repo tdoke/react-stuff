@@ -15,6 +15,7 @@ const renderTextField = ({
     <TextField
       label={label}
       error={touched && error && error.length>0}
+      required={true}
       {...input}
       {...custom}
     />
@@ -39,9 +40,6 @@ const LoginForm = ({
               name="userName"
               component={renderTextField}
               label="userName"
-              custom={{
-                required: true
-              }}
               validate={[required]}
             />
           </FlexView>
