@@ -6,6 +6,7 @@ import { Printer } from './event-handling/Printer';
 import { EmpListCotainer } from './list-keys/EmpListContainer';
 import { NameForm } from './forms/NameForm';
 import { ContextApp } from './context/ContextApp';
+import { GetInput } from './state-lifecycle/LogLIfeCycles';
 
 import './App.css';
 
@@ -20,6 +21,7 @@ class App extends Component {
         <EmpListCotainer />
         <NameForm />
         <ContextApp />
+        <GetInput />
       </div>
     );
   }
