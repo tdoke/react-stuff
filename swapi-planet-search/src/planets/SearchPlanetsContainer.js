@@ -9,10 +9,10 @@ import PlanetList from './components/planet-list/PlanetList'
 const SearchPlanetsContainer = ({ searchPlanet, searchPlanetsResult }) => (
   <div>
     <FlexView column marginTop={56}>
-      <FlexView hAlignContent="center" vAlignContent="center" height='100%' width='100%'>
+      <FlexView hAlignContent="center">
         <SearchPlanetBar onSearchInputChange={searchPlanet} />
       </FlexView>
-      <FlexView marginTop={32} hAlignContent="center" vAlignContent="center" height='100%' width='100%'>
+      <FlexView marginTop={96} hAlignContent="center">
         <PlanetList planets={searchPlanetsResult} />
       </FlexView>
     </FlexView>

@@ -7,7 +7,7 @@ const PlanetList = ({ planets }) => (
     <FlexView column>
       {
         planets.map((planet, index) =>
-          <FlexView className="planet-row" key={index} width={500} marginBottom={16}>
+          <FlexView className="planet-row" key={index} width={800}>
             <FlexView hAlignContent="left" width="50%">{planet.name}</FlexView>
             <FlexView hAlignContent="right" width="50%">{planet.population}</FlexView>
           </FlexView>

@@ -1,3 +1,10 @@
 .planet-list-container {
   box-sizing: border-box;
 }
+.planet-list-container .planet-row {
+  padding: 16px 32px;
+  border-bottom: 1px solid #b2b2b2;
+}
+.planet-list-container .planet-row:first-of-type {
+  border-top: 1px solid #b2b2b2;
+}
