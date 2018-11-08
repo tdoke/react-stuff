@@ -15,7 +15,10 @@ const searchPlanetSuccess = planets => ({
 const searchPlanetFailed = () => ({
   type: actionTypes.SEARCH_PLANET_FAILED
 })
-const sortByPopultaion = (data) => data.sort((item1, item2) => item1.population - item2.population)
+const sortByPopultaion = (data) => data.sort((item1, item2) => {
+  if (isNaN(item1.population) || isNaN(item2.population)) return -1;
+  return item1.population - item2.population;
+})
 
 export const searchPlanet = name => {
   return dispatch => {
