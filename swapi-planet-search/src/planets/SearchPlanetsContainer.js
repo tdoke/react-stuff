@@ -12,7 +12,7 @@ const SearchPlanetsContainer = ({ searchPlanet, searchPlanetsResult }) => (
       <FlexView hAlignContent="center">
         <SearchPlanetBar onSearchInputChange={searchPlanet} />
       </FlexView>
-      <FlexView marginTop={96} hAlignContent="center">
+      <FlexView marginTop={56} hAlignContent="center">
         <PlanetList planets={searchPlanetsResult} />
       </FlexView>
     </FlexView>
