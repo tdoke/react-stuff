@@ -25,9 +25,11 @@ export const searchPlanet = name => {
     axios
       .get(`https://swapi.co/api/planets/?search=${name}`)
       .then(response => response.data)
-      .then(data => {
-        const unknownPupulationPlanets = data.results.filter(planet => isNaN(planet.population));
-        const knownPupulationPlanets = data.results.filter(planet => !isNaN(planet.population));
+      .then(data => ({
+        unknownPupulationPlanets: data.results.filter(planet => isNaN(planet.population)),
+        knownPupulationPlanets: data.results.filter(planet => !isNaN(planet.population))
+      }))
+      .then(({ unknownPupulationPlanets, knownPupulationPlanets }) => {
         dispatch(searchPlanetSuccess([...unknownPupulationPlanets, ...sortByPopultaion(knownPupulationPlanets)]));
       })
       .catch(error => dispatch(searchPlanetFailed(error)))
