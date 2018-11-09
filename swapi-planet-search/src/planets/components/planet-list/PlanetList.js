@@ -15,7 +15,7 @@ const PlanetList = ({ planets }) => (
               }</FlexView>
             </FlexView>
             <FlexView width={isNaN(planet.population) ? (100 / planets.length) + "%" : (100 / planets.length) * (index + 1) + "%"}
-              marginTop={16} height={8} style={{ backgroundColor: '#b2b2b2' }}>
+              marginTop={16} height={8} className="population-grid">
             </FlexView>
           </FlexView>
         )
