@@ -23,6 +23,7 @@ export default class SearchPlanetBar extends React.PureComponent {
           <TextField
             label="Planet"
             fullWidth
+            autoFocus={true}
             onChange={this.handleSearchInputChange}
           />
         </FlexView>
