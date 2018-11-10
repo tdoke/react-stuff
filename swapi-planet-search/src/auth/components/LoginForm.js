@@ -42,7 +42,7 @@ const LoginForm = ({
               label="UserName"
               type="text"
               validate={[required]}
-              {...{ className: 'login-input-width' }}
+              {...{ className: 'login-input-width', autoFocus: true }}
             />
           </FlexView>
           <FlexView marginBottom={64}>
