@@ -3,7 +3,7 @@ import axios from 'axios';
 class Service {
   constructor() {
     let service = axios.create({
-      headers: { csrf: 'token' }
+      headers: {} //{ csrf: 'token' }
     });
     service.interceptors.response.use(this.handleSuccess, this.handleError);
     this.service = service;

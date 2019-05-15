@@ -19,13 +19,15 @@ const fetchArticlesFailed = () => ({
   type: actionTypes.FETCH_ARTICLES_FAILED
 });
 
-export const fetchArticles = name => {
+export const fetchArticles = () => {
   return dispatch => {
     dispatch(fetchArticlesStart())
     apiService
-      .get(`https://swapi.co/api/planets/?search=${name}`)
-      .then(response => response.data)
-      .then(data => dispatch(fetchArticlesSuccess(data)))
+      .get(`https://api.nytimes.com/svc/mostpopular/v2/mostviewed/all-sections/7.json?api-key=lxGWJ2qWmub93OwajwWfUhlu0FIRaLfk`)
+      .then(response => {
+        console.log(response);
+        dispatch(fetchArticlesSuccess(response.data.results))
+      })
       .catch(error => dispatch(fetchArticlesFailed(error)))
   }
 }
