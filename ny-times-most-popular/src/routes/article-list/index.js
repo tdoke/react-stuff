@@ -1,2 +1,2 @@
-import ArticleList from './ArticleList.component';
+import ArticleList from './ArticleList.container';
 export default ArticleList;

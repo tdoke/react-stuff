@@ -55,4 +55,4 @@ class Service {
   }
 }
 
-export default new Service;
+export default new Service();
