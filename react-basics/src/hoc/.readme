@@ -1,0 +1,7 @@
+1] write a logic to reuse into a component
+2] create hoc file and add hoc scaffold to it.
+3] move reusable logic to hoc
+4] pass props/config/behaviour through child component.
+
+
+5] create an HOC which if user is not logged in does not show the content at all.

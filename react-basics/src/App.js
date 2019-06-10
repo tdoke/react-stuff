@@ -9,6 +9,7 @@ import { ContextApp } from './context/ContextApp';
 import { GetInput } from './state-lifecycle/LogLIfeCycles';
 import { A } from './components-props/prop-passing-3-level/stateless-children';
 import StatefulParentA from './components-props/prop-passing-3-level/stateful-children/A';
+import CommentsWithLogin from './hoc/Comments';
 
 
 import './App.css';
@@ -27,6 +28,7 @@ class App extends Component {
         <GetInput />
         <A />
         <StatefulParentA />
+        <CommentsWithLogin />
       </div>
     );
   }
