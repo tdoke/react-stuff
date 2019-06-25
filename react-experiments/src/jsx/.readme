@@ -30,6 +30,7 @@ const element = {
     children: 'Hello, world!'
   }
 };
+// here if its a dom tag, type would be string, if its react component class/function it will be that instance.
 These objects are called “React elements”. You can think of them as descriptions 
 of what you want to see on the screen. React reads these objects and uses them to 
 construct the DOM and keep it up to date.
@@ -38,3 +39,16 @@ jsx -> babel -> React.createElements() -> React elements(json objects) -> React 
 
 
 
+// examples
+// jsx
+const childElement = (<div><span><h1>child</h1></span></div>)
+const childElement2 = (<div>child 2</div>)
+const parentElement = (
+  <div>parent <childElement/> <childElement2 /></div>
+)
+
+// babe output of jsx
+"use strict";
+var childElement = React.createElement("div", null, React.createElement("span", null, React.createElement("h1", null, "child")));
+var childElement2 = React.createElement("div", null, "child 2");
+var parentElement = React.createElement("div", null, "parent ", React.createElement("childElement", null), " ", React.createElement("childElement2", null));
