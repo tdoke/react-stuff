@@ -1,2 +1,25 @@
 https://reactjs.org/docs/react-component.html
 https://developmentarc.gitbooks.io/react-indepth
+
+
+Birth / Mounting
+Initialize / Construction
+getDefaultProps() (React.createClass) or MyComponent.defaultProps (ES6 class)
+getInitialState() (React.createClass) or this.state = ... (ES6 constructor)
+static getDerivedStateFromProps(props, state)
+render()
+Children initialization & life cycle kickoff
+componentDidMount()
+
+Growth / Update
+static getDerivedStateFromProps(props, state)
+shouldComponentUpdate()
+render()
+Children Life cycle methods
+componentDidUpdate()
+
+
+Death / Un-Mounting
+componentWillUnmount()
+Children Life cycle methods
+Instance destroyed for Garbage Collection
