@@ -1,5 +1,6 @@
 import TimeTicker from './jsx/TimeTicker';
 import MountExample from './component-lifecycles/Mount';
+import UpdateExample from './component-lifecycles/Update';
 export default [
   {
     path: "/jsx",
@@ -12,5 +13,11 @@ export default [
     exact: true,
     component: MountExample,
     key: 'MountExample'
+  },
+  {
+    path: "/component-update-lifecycles",
+    exact: true,
+    component: UpdateExample,
+    key: 'UpdateExample'
   }
 ]
