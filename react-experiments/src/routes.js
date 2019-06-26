@@ -3,6 +3,7 @@ import MountExample from './component-lifecycles/Mount';
 import UpdateExample from './component-lifecycles/Update';
 import CounterWithUseState from './hooks/Counter';
 import InputWithUseState from './hooks/Input';
+import ListEmployees from './hooks/ListEmployees';
 
 export default [
   {
@@ -34,5 +35,11 @@ export default [
     exact: true,
     component: InputWithUseState,
     key: 'InputWithUsefState'
+  },
+  {
+    path: "/list-employees-with-use-effects",
+    exact: true,
+    component: ListEmployees,
+    key: 'ListEmployees'
   }
 ]

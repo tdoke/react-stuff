@@ -17,6 +17,7 @@ function App() {
           <Link to="/component-update-lifecycles">component update lifecycles</Link>
           <Link to="/use-state-hook">with use state hook</Link>
           <Link to="/input-with-use-state">Input with user state</Link>
+          <Link to="/list-employees-with-use-effects">List employees with use effects</Link>
         </div>
         <div className='content'><RoutesConfig appRoutes={routes} /></div>
       </div>
