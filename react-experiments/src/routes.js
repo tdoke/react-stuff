@@ -1,6 +1,8 @@
 import TimeTicker from './jsx/TimeTicker';
 import MountExample from './component-lifecycles/Mount';
 import UpdateExample from './component-lifecycles/Update';
+import CounterWithUseState from './hooks/Counter';
+
 export default [
   {
     path: "/jsx",
@@ -19,5 +21,11 @@ export default [
     exact: true,
     component: UpdateExample,
     key: 'UpdateExample'
+  },
+  {
+    path: "/use-state-hook",
+    exact: true,
+    component: CounterWithUseState,
+    key: 'CounterWithUseState'
   }
 ]
