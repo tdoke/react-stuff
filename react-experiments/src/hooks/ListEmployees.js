@@ -9,6 +9,8 @@ const ListEmployees = () => {
     get()
       .then(employees => setEmployees(employees))
       .catch((error) => console.log(error))
+
+    return () => console.log('componentDidMount clean up, using useEffect return function')
   }, []) // passing empty array to useEffect making it run only after first render.
 
   return (
