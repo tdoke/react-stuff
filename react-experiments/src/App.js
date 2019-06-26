@@ -18,6 +18,7 @@ function App() {
           <Link to="/use-state-hook">with use state hook</Link>
           <Link to="/input-with-use-state">Input with user state</Link>
           <Link to="/list-employees-with-use-effects">List employees with use effects</Link>
+          <Link to="/with-reusable-hook">Employees with reusable hook</Link>
         </div>
         <div className='content'><RoutesConfig appRoutes={routes} /></div>
       </div>

@@ -4,6 +4,7 @@ import UpdateExample from './component-lifecycles/Update';
 import CounterWithUseState from './hooks/Counter';
 import InputWithUseState from './hooks/Input';
 import ListEmployees from './hooks/ListEmployees';
+import { Employees } from './hooks/Employees';
 
 export default [
   {
@@ -41,5 +42,11 @@ export default [
     exact: true,
     component: ListEmployees,
     key: 'ListEmployees'
+  },
+  {
+    path: "/with-reusable-hook",
+    exact: true,
+    component: Employees,
+    key: 'Employees'
   }
 ]
