@@ -2,6 +2,7 @@ import TimeTicker from './jsx/TimeTicker';
 import MountExample from './component-lifecycles/Mount';
 import UpdateExample from './component-lifecycles/Update';
 import CounterWithUseState from './hooks/Counter';
+import InputWithUseState from './hooks/Input';
 
 export default [
   {
@@ -27,5 +28,11 @@ export default [
     exact: true,
     component: CounterWithUseState,
     key: 'CounterWithUseState'
+  },
+  {
+    path: "/input-with-use-state",
+    exact: true,
+    component: InputWithUseState,
+    key: 'InputWithUsefState'
   }
 ]
