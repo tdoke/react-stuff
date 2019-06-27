@@ -15,10 +15,14 @@ function App() {
           <Link to="/jsx">reconciliation and diffing</Link>
           <Link to="/component-mount-lifecycles">component mount lifecycles</Link>
           <Link to="/component-update-lifecycles">component update lifecycles</Link>
-          <Link to="/use-state-hook">with use state hook</Link>
-          <Link to="/input-with-use-state">Input with user state</Link>
-          <Link to="/list-employees-with-use-effects">List employees with use effects</Link>
-          <Link to="/with-reusable-hook">Employees with reusable hook</Link>
+          <Link to="/state-clock-example">State change example</Link>
+          <Link to="/prop-passing-stateless">Stateless components prop passing</Link>
+          <Link to="/prop-passing-stateful">Stateful components prop passing</Link>
+          <Link to="/use-state-hook">hooks: with use state hook</Link>
+          <Link to="/input-with-use-state">hooks: Input with user state</Link>
+          <Link to="/list-employees-with-use-effects">hooks: List employees with use effects</Link>
+          <Link to="/with-reusable-hook">hooks: Employees with reusable hook</Link>
+
         </div>
         <div className='content'><RoutesConfig appRoutes={routes} /></div>
       </div>

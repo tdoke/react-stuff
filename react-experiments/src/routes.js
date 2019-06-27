@@ -5,6 +5,9 @@ import CounterWithUseState from './hooks/Counter';
 import InputWithUseState from './hooks/Input';
 import ListEmployees from './hooks/ListEmployees';
 import { Employees } from './hooks/Employees';
+import { Clock } from './state-and-props/state-lifecycle/Clock';
+import StatelessPropPassing from './state-and-props/components-props/prop-passing-3-level/stateless-children';
+import StatefulPropPassing from './state-and-props/components-props/prop-passing-3-level/stateful-children/A';
 
 export default [
   {
@@ -48,5 +51,23 @@ export default [
     exact: true,
     component: Employees,
     key: 'Employees'
+  },
+  {
+    path: "/state-clock-example",
+    exact: true,
+    component: Clock,
+    key: 'Clock'
+  },
+  {
+    path: "/prop-passing-stateless",
+    exact: true,
+    component: StatelessPropPassing,
+    key: 'StatelessPropPassing'
+  },
+  {
+    path: "/prop-passing-stateful",
+    exact: true,
+    component: StatefulPropPassing,
+    key: 'StatefulPropPassing'
   }
 ]
