@@ -8,7 +8,7 @@ beforeEach(() => {
   props = {
     saveComments: jest.fn()
   }
-  wrapper = mount(<CommentBox.WrappedComponent {...props}/>)
+  wrapper = mount(<CommentBox.WrappedComponent {...props} />)
 })
 
 afterEach(() => {
