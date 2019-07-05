@@ -17,13 +17,26 @@ it('should have textarea and submit button', () => {
   expect(wrapper.find('button').length).toEqual(1)
 })
 
-it('has a text area that a user can type in', () => {
-  wrapper.find('textarea').simulate('change', {
-    target: {
-      value: 'test'
-    }
+describe('the textarea', () => {
+  beforeEach(() => {
+    wrapper.find('textarea').simulate('change', {
+      target: {
+        value: 'test'
+      }
+    })
+
+    wrapper.update() // as this.setState() is async, wrapper.update makes sure that the component is updated
+    // Forces a re-render. Useful to run before checking the render output if something external may be updating the state of the component somewhere.
   })
 
-  wrapper.update()
-  expect(wrapper.find('textarea').prop('value')).toEqual('test')
+  it('has a text area that a user can type in', () => {
+    expect(wrapper.find('textarea').prop('value')).toEqual('test')
+  })
+
+  it('make textarea empty when form is submitted', () => {
+    wrapper.find('form').simulate('submit')
+    wrapper.update()
+    expect(wrapper.find('textarea').prop('value')).toEqual('')
+  })
+
 })

@@ -22,9 +22,9 @@ class CommentBox extends Component {
   render() {
     return (<div>
       <h4>add comment</h4>
-      <form>
+      <form onSubmit={this.handleSubmitBtnClick}>
         <textarea value={this.state.comments} onChange={this.handleInputChange}></textarea>
-        <button type='submit' onClick={this.handleSubmitBtnClick}>submit</button>
+        <button>submit</button>
       </form>
     </div>);
   }
