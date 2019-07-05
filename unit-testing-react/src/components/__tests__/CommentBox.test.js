@@ -3,9 +3,12 @@ import { mount } from 'enzyme'
 import CommentBox from 'components/CommentBox'
 
 let wrapper
-
+let props
 beforeEach(() => {
-  wrapper = mount(<CommentBox />)
+  props = {
+    saveComments: jest.fn()
+  }
+  wrapper = mount(<CommentBox.WrappedComponent {...props}/>)
 })
 
 afterEach(() => {
