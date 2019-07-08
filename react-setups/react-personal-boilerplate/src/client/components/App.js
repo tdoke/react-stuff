@@ -6,7 +6,7 @@ class App extends Component {
     this.state = {}
   }
   render() {
-    console.log(process.env.URL_ENDPOINT)
+    console.log(process.env.endpoint)
     return (<div>
       <h2>This is App component: </h2>
     </div>);
