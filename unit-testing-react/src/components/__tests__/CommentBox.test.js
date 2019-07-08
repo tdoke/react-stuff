@@ -36,9 +36,10 @@ describe('the textarea', () => {
     expect(wrapper.find('textarea').prop('value')).toEqual('test')
   })
 
-  it('make textarea empty when form is submitted', () => {
+  it('calls saveComments and makes textarea empty when form is submitted', () => {
     wrapper.find('form').simulate('submit')
     wrapper.update()
+    expect(props.saveComments).toBeCalled()
     expect(wrapper.find('textarea').prop('value')).toEqual('')
   })
 
