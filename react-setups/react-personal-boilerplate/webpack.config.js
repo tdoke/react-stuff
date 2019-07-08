@@ -1,6 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-
+const Dotenv = require('dotenv-webpack'); // to read environment variables from .env file
 
 module.exports = {
   entry: path.join(__dirname, "src", "client", "index.js"),
@@ -24,6 +24,7 @@ module.exports = {
       filename: "index.html",
       template: path.join(__dirname, "src", "client", "index.html")
     }),
+    new Dotenv()
   ],
   resolve: {
     alias: {

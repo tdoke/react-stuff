@@ -6,8 +6,9 @@ class App extends Component {
     this.state = {}
   }
   render() {
+    console.log(process.env.URL_ENDPOINT)
     return (<div>
-      <h2>This is App component</h2>
+      <h2>This is App component: </h2>
     </div>);
   }
 }
