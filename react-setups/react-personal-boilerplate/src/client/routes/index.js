@@ -1,10 +1,10 @@
-import App from 'client/components/App';
+import Home from 'client/routes/home/home';
 
 const routes = [
   {
     path: "/",
     exact: true,
-    component: App
+    component: Home
   }
 ]
 
