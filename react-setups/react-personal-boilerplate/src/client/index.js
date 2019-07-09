@@ -1,5 +1,13 @@
-import React from "react";
+import React from 'react';
 import ReactDOM from "react-dom";
-import App from "client/components/App";
+import { renderRoutes } from "react-router-config";
+import { BrowserRouter } from 'react-router-dom'
+import routes from "client/routes";
 
-ReactDOM.render(<App />, document.getElementById("app"));
+
+const renderApp = () =>
+  <BrowserRouter>
+    {renderRoutes(routes)}
+  </BrowserRouter>
+
+ReactDOM.render(renderApp(), document.getElementById("app"));
