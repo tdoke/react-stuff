@@ -1,10 +1,10 @@
-import Home from 'client/routes/home/home';
+import { lazy } from 'react'
 
 const routes = [
   {
     path: "/",
     exact: true,
-    component: Home
+    component: lazy(() => import('client/routes/home/home'))
   }
 ]
 
