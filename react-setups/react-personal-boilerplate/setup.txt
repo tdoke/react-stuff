@@ -2,6 +2,7 @@ npm i webpack webpack-cli webpack-dev-server --save-dev
 npm i @babel/core @babel/preset-env @babel/preset-react babel-loader --save-dev
 npm i react react-dom --save
 npm i html-webpack-plugin --save-dev
+npm i react-router-dom react-router-config --save
 
 to copy env files
 cp src dest
