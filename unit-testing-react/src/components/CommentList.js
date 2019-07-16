@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const commentsList = (props) => {
+export const CommentsList = (props) => {
   return (<div>
     <ul>
       {
@@ -15,4 +15,4 @@ const mapStateToProps = (state) => ({
   comments: state.comments
 })
 
-export default connect(mapStateToProps)(commentsList);
+export default connect(mapStateToProps)(CommentsList);
