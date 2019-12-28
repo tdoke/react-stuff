@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>todo app react</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+    <script type="text/babel">
+      class ToDoList extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            inputItem: "",
+            items: []
+          };
+          this.handleInputChange = this.handleInputChange.bind(this);
+          this.addItem = this.addItem.bind(this);
+        }
+
+        handleInputChange(event) {
+          this.setState({ inputItem: event.target.value });
+        }
+
+        addItem() {
+          const item = this.state.inputItem;
+          const items = this.state.items;
+          items.push(item);
+          this.setState({ items });
+        }
+
+        renderItemList() {
+          return (
+            <ol>
+              {this.state.items.map(item => (
+                <li>{item}</li>
+              ))}
+            </ol>
+          );
+        }
+
+        render() {
+          return (
+            <div>
+              <input
+                type="text"
+                value={this.state.inputItem}
+                onChange={this.handleInputChange}
+              />
+              <button onClick={this.addItem}>add</button>
+              {this.renderItemList()}
+            </div>
+          );
+        }
+      }
+      ReactDOM.render(<ToDoList />, document.getElementById("root"));
+    </script>
+  </body>
+</html>

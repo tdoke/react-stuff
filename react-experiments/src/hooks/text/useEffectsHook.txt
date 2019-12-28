@@ -1,0 +1,132 @@
+(picked from https://reactjs.org/docs/hooks-effect.html#explanation-why-effects-run-on-each-update)
+The Effect Hook lets you perform side effects in function components:
+
+what are side effects in react ?
+Data fetching, setting up a subscription, and manually changing the DOM in React components are all examples of side effects. 
+Whether or not you’re used to calling these operations “side effects” (or just “effects”), you’ve likely performed them in 
+your components before.
+
+effects without cleanup:
+Network requests, manual DOM mutations, and logging.. etc
+
+effects with cleanup:
+we might want to set up a subscription to some external data source. In that case, it is important to clean up so 
+that we don’t introduce a memory leak!
+
+why useEffect runs after every render cycle ?
+genrally in class component when we add a side effect, we tendt repeat code in componentDidMount, componentDidUpdate.
+so ideally code in [componentDidMount, componentDidUpdate] is same and it runs(in componentDidUpdate) after every render.
+so react team added useEffects and made it run after every render(i.e afte DOM update).
+
+What does useEffect do? 
+By using this Hook, you tell React that your component needs to do something after render. React will remember the function you passed (we’ll refer to it as our “effect”), and call it later after performing the DOM updates. In this effect, we set the document title, but we could also perform data fetching or call some other imperative API.
+
+Why is useEffect called inside a component? 
+Placing useEffect inside the component lets us access the count state variable (or any props) right from the effect. We don’t need a special API to read it — it’s already in the function scope. Hooks embrace JavaScript closures and avoid introducing React-specific APIs where JavaScript already provides a solution.
+
+Does useEffect run after every render? 
+Yes! By default, it runs both after the first render and after every update. (We will later talk about how to customize this.) Instead of thinking in terms of “mounting” and “updating”, you might find it easier to think that effects happen “after render”. React guarantees the DOM has been updated by the time it runs the effects.
+
+Experienced JavaScript developers might notice that the function passed to useEffect is going to be different on every render. 
+This is intentional. In fact, this is what lets us read the count value from inside the effect without worrying about it 
+getting stale. Every time we re-render, we schedule a different effect, replacing the previous one. In a way, this makes the 
+effects behave more like a part of the render result — each effect “belongs” to a particular render. We will see more clearly 
+why this is useful later on this page.
+
+whats promblem with effects cleanup in classes ?
+  componentDidMount() {
+    ChatAPI.subscribeToFriendStatus(
+      this.props.friend.id,
+      this.handleStatusChange
+    );
+  }
+
+  componentWillUnmount() {
+    ChatAPI.unsubscribeFromFriendStatus(
+      this.props.friend.id,
+      this.handleStatusChange
+    );
+  }
+
+Notice how componentDidMount and componentWillUnmount need to mirror each other. 
+Lifecycle methods force us to split this logic even though conceptually code in both of them is related to the same effect.
+
+how effect cleanup using useEffect, solves above problem ?
+  useEffect(() => {
+    function handleStatusChange(status) {
+      setIsOnline(status.isOnline);
+    }
+
+    ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
+    // Specify how to clean up after this effect:
+    return function cleanup() {
+      ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
+    };
+  });
+
+But code for adding and removing a subscription is so tightly related that useEffect is designed to keep it together.
+If your effect returns a function, React will run it when it is time to clean up
+
+Why did we return a function from our effect? This is the optional cleanup mechanism for effects. 
+Every effect may return a function that cleans up after it. This lets us keep the logic for adding and 
+removing subscriptions close to each other. They’re part of the same effect!
+
+When exactly does React clean up an effect? React performs the cleanup when the component unmounts. 
+However, as we learned earlier, effects run for every render and not just once. This is why React also cleans up 
+effects from the previous render before  running the effects next time. We’ll discuss why this helps avoid bugs and how to 
+opt out of this behavior in case it creates performance issues later below.
+
+EACH RENDER HAS ITS OWN INSTANCE OF useEffect WHICH RUNS AFTER THAT RENDER(DOM UPDATE).
+
+why effect run on each render ??
+https://reactjs.org/docs/hooks-effect.html#explanation-why-effects-run-on-each-update
+
+  componentDidMount() {
+    ChatAPI.subscribeToFriendStatus(
+      this.props.friend.id,
+      this.handleStatusChange
+    );
+  }
+
+  componentDidUpdate(prevProps) {
+    // Unsubscribe from the previous friend.id
+    ChatAPI.unsubscribeFromFriendStatus(
+      prevProps.friend.id,
+      this.handleStatusChange
+    );
+    // Subscribe to the next friend.id
+    ChatAPI.subscribeToFriendStatus(
+      this.props.friend.id,
+      this.handleStatusChange
+    );
+  }
+
+  componentWillUnmount() {
+    ChatAPI.unsubscribeFromFriendStatus(
+      this.props.friend.id,
+      this.handleStatusChange
+    );
+  }
+
+to avoid above scenario, effect cleans up after each render.
+
+// Mount with { friend: { id: 100 } } props
+ChatAPI.subscribeToFriendStatus(100, handleStatusChange);     // Run first effect
+
+// Update with { friend: { id: 200 } } props
+ChatAPI.unsubscribeFromFriendStatus(100, handleStatusChange); // Clean up previous effect
+ChatAPI.subscribeToFriendStatus(200, handleStatusChange);     // Run next effect
+
+// Update with { friend: { id: 300 } } props
+ChatAPI.unsubscribeFromFriendStatus(200, handleStatusChange); // Clean up previous effect
+ChatAPI.subscribeToFriendStatus(300, handleStatusChange);     // Run next effect
+
+// Unmount
+ChatAPI.unsubscribeFromFriendStatus(300, handleStatusChange); // Clean up last effect
+
+
+
+
+
+
+ 

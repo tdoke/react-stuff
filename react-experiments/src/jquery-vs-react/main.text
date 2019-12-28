@@ -1,0 +1,65 @@
+Understanding react by comparing it with Jquery.
+
+I will build a simple todolist twice, first using React and then using Jquery and try to compare both. It would give me deeper understanding of react
+and how it is different from pure DOM manupulation library like Jquery.
+
+To keep comparison simple I am using simple HTML page with scripts.
+
+TodoList using React:
+1] Add React,Babel to HTML document using <script>
+create stateful React component ToDoList
+2] Add below stuff on the state object in constructor
+   inputItem : it is updated every time input changes.
+   items: Its an array, when user clicks on add btn, inputItem is pushed onto items.
+3] below are the methods we have
+handleInputChange : Every time value changes in HTML <Input />, handleInputChange updates this.state.inputItem with that value.
+addItem: When user clicks on "add" button, addItem adds "this.state.inputItem" to "this.state.items" array.
+renderItemList: This method renders "this.state.items" as a HTML list.
+render: ToDoList's render function with all the markup.
+
+TodoList using Jquery: 
+1] Add Jquery,Babel to HTML document using <script>
+2] I am trying to structure Jquery code similar to React. 
+   So on document ready, 
+    create instance of ToDoList and pass Jquery function to it.
+    render ToDoList at a node "root" in DOM.
+3] ToDoList has below things in constructor.
+   items array, and reference to Jquery _$.
+   methods:
+   addItem: 
+     1] read value from node inputNodeId
+     2] add value on items array
+     3] render items as a list on listNodeId
+   renderItemList: render item list on a node passed to it.
+   addListeners: subscribe listener functions to DOM events.
+    subscribe this.addItem to "add button" click event.
+   render: returns TODOList's HTML markup in text.  
+
+
+If you look at Jquery code reading/updating DOM is mixing with reading/updating of UI state.
+addItem(inputNodeId, listNodeId) {
+          const item = this._$(`#${inputNodeId}`).val(); // DOM READ
+          this.items.push(item); // MODIFY STATE
+          this.renderItemList(listNodeId); // DOM UPDATE
+        }
+so its like read value from a DOM Node A, modify state, render values at DOM node B.
+so when state is modified, we need to explicity change the DOM.  
+This makes above code imperative as we need to explicity keep DOM in sync with UI state changes.  
+This way when UI grows, keeping DOM in sync with UI state becomes more difficult and error prone. 
+
+If you look at same function in React
+addItem() {
+          const item = this.state.inputItem;
+          const items = this.state.items;
+          items.push(item);
+          this.setState({ items });
+        }
+here addItem() reads from the state and updates a part of state.Thats it. 
+React will take care of how DOM will "react" to this state change. 
+
+So we need to tell React what DOM will look like when state would change
+when state is s2 show view2(some jsx code).
+when state s1 changes to s2. view2 will automatically get rendered. (we dont need to tell react How to render view2 in DOM)
+Thats where React shines in seperating DOM manipulation from UI state manipulation.
+As user we need to focuse on state and its modifications and tell react what views to show when state changes. 
+How to show those views in DOM, is taken care by React(ReactDOM to be precise).

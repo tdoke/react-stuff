@@ -1,0 +1,29 @@
+1] lib size
+ jquey: 69kb
+ react: 125(react) + 606(react-dom) + 753(babel) = 1484kb = 0.084mb
+2] react: u can compose and reuse things using components and create a tree of components talking to each other
+3] react: there is no how to do code, there is what to do code. I dont have to write a code to 
+render item list when new item is added to it.
+4] react: there is no explicit dom manipulation, which i had to do with jquery,
+5] react:
+* creating state
+* writing functions that change state
+* pluggin those function in ur HTML markup
+* writing what markup should look like when state changes.
+* ui composibility = i can seperate input ui and list ui as two different components, and reuse them seperately.
+6] jquery: 
+  * creating state
+  * writing functions that change state
+  * pluggin those function in ur HTML markup (DOM) by telling jquery id of that dom element and on what event we need to execute
+    that function
+  * u need to explicitly listen to events that would change DOM, and subscribe DOM modifying code to those events
+  
+  react really shines in last two points
+
+  jquery is dom manipulation library while react is
+
+  ui is value output of state: value changes when state changes
+
+  var ui = react(state, [functions subscribed to events(DOM/non DOM) that change state], [functions that return a particular UI when state changes])
+
+  we can use/reuse/pass around/compose this ui just like any other javascript variable.

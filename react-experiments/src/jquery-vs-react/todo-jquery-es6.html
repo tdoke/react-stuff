@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>toapp jquery</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+    <script>
+      class ToDoList {
+        constructor(jQuery) {
+          this.items = [];
+          this._$ = jQuery;
+        }
+
+        addItem(inputNodeId, listNodeId) {
+          const item = this._$(`#${inputNodeId}`).val();
+          this.items.push(item);
+          this.renderItemList(listNodeId);
+        }
+
+        renderItemList(nodeId) {
+          this._$(`#${nodeId}`).html(
+            this.items.map(item => `<li>${item}</li>`).join("")
+          );
+        }
+
+        addListeners() {
+          $("#add-btn").click(() => this.addItem("listItem", "item-list"));
+        }
+
+        render() {
+          return `<div>
+            <input type="text" id="listItem" />
+            <button id="add-btn">add</button>
+            <ol id="item-list"></ol>
+          </div>`;
+        }
+      }
+
+      function renderInDOM(nodeToRender, rootNode) {
+        rootNode.appendChild(
+          new DOMParser().parseFromString(nodeToRender.render(), "text/html")
+            .documentElement
+        );
+        nodeToRender.addListeners();
+      }
+
+      $(document).ready(function() {
+        const todoList = new ToDoList($);
+        renderInDOM(todoList, document.getElementById("root"));
+      });
+    </script>
+  </body>
+</html>

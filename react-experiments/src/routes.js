@@ -5,9 +5,12 @@ import CounterWithUseState from './hooks/Counter';
 import InputWithUseState from './hooks/Input';
 import ListEmployees from './hooks/ListEmployees';
 import { Employees } from './hooks/Employees';
+import ShowList from './hooks/ShowList';
+import ShowPersonDetails from './hooks/ShowPersonById';
 import { Clock } from './state-and-props/state-lifecycle/Clock';
 import StatelessPropPassing from './state-and-props/components-props/prop-passing-3-level/stateless-children';
 import StatefulPropPassing from './state-and-props/components-props/prop-passing-3-level/stateful-children/A';
+
 
 export default [
   {
@@ -51,6 +54,18 @@ export default [
     exact: true,
     component: Employees,
     key: 'Employees'
+  },
+  {
+    path: "/with-swapi-useeffect-hook",
+    exact: true,
+    component: ShowList,
+    key: 'ShowList'
+  },
+  {
+    path: "/with-swapi-show-person-details",
+    exact: true,
+    component: ShowPersonDetails,
+    key: 'ShowPersonDetails'
   },
   {
     path: "/state-clock-example",

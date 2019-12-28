@@ -1,0 +1,41 @@
+1] why use useEffect ??
+to execute side effects during lifecycle of a compoenent , when 
+component is rendered, 
+on first render, 
+when components state changes, 
+to unsubscribe when component unmounts
+
+* The idea to use useEffect hook is to execute code that needs happens during lifecycle of the component 
+instead of on specific user interactions or DOM events.
+
+side effects:
+A "side effect" is anything that affects something outside the scope of the function being executed. These can be, say, a network request, which has your code communicating with a third party (and thus making the request, causing logs to be recorded, caches to be saved or updated, all sorts of effects that are outside the function.
+
+There are more subtle side effects, too. Changing the value of a closure-scoped variable is a side effect. Pushing a new item onto an array that was passed in as an argument is a side effect. Functions that execute without side effects are called "pure" functions: they take in arguments, and they return values. Nothing else happens upon executing the function. This makes the easy to test, simple to reason about, and functions that meet this description have all sorts of useful properties when it comes to optimization or refactoring.
+
+Pure functions are deterministic (meaning that, given an input, they always return the same output), but that doesn't mean that all impure functions have side effects. Generating a random value within a function makes it impure, but isn't a side effect, for example. React is all about pure functions, and asks that you keep several lifecycle methods pure, so these are good questions to be asking.
+
+2] when is useEffect gets executed in component lifecycle?
+
+signature: useEffect(fn, […watchStates])
+
+by default useEffect runs after every render cycle.
+
+* want to execute useEffect only once like componentDidMount in classes.
+ By default useEffect is executed after every render cycle of component.
+ To execute useEffect like componentDidMount, we need to execute useEffect only once i.e after first render.
+ To do this pass empty array to useEffect.  useEffect(fn, [])
+
+* want to execute useEffect, after every render cycle. like componentDidUpdate in classes.
+  just use : useEffect(fn), this will execute useEffect after every render.
+  DO NOT MODIFY STATE IN THIS useEffect, if u modify state in this scenario useEffect will run in loop.
+  useEffect(fn) -> modify state -> render -> useEffect(fn)->......
+
+* want to execute useEffect, when some part of state changes.
+  useEffect(fn, [...part of state that changes])
+
+
+
+
+
+
