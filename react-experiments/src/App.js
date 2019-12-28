@@ -25,6 +25,12 @@ function App() {
           <Link to="/with-swapi-show-person-details">hooks: show person details</Link>
           <Link to="/with-reusable-hook">hooks: Employees with reusable hook</Link>
           <Link to="/jquery-vs-react">jquery vs react</Link>
+          <Link to="/patterns/children-api/header-hard-bind-navigation">patterns: children api / header with hard binding child</Link>
+          <Link to="/patterns/children-api/header-with-child-prop">patterns: children api / header with children prop</Link>
+          <Link to="/patterns/children-api/prop-passing/hard-bind">patterns: children api / container with hard binding child</Link>
+          <Link to="/patterns/children-api/prop-passing/with-child-prop">patterns: children api / container with children prop</Link>
+
+
         </div>
         <div className='content'><RoutesConfig appRoutes={routes} /></div>
       </div>

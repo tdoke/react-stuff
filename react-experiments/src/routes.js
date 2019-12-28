@@ -10,6 +10,8 @@ import ShowPersonDetails from './hooks/ShowPersonById';
 import { Clock } from './state-and-props/state-lifecycle/Clock';
 import StatelessPropPassing from './state-and-props/components-props/prop-passing-3-level/stateless-children';
 import StatefulPropPassing from './state-and-props/components-props/prop-passing-3-level/stateful-children/A';
+import Basic from './patterns/children-api/basic';
+import ChildrenApiPropPassing from './patterns/children-api/prop-passing';
 
 
 export default [
@@ -84,5 +86,29 @@ export default [
     exact: true,
     component: StatefulPropPassing,
     key: 'StatefulPropPassing'
+  },
+  {
+    path: '/patterns/children-api/header-hard-bind-navigation',
+    exact: true,
+    component: Basic.HeaderWithHardBoundNavigation,
+    key: 'HeaderWithHardBoundNavigation'
+  },
+  {
+    path: '/patterns/children-api/header-with-child-prop',
+    exact: true,
+    component: Basic.HeaderWithChildrenProp,
+    key: 'HeaderWithChildProp'
+  },
+  {
+    path: '/patterns/children-api/prop-passing/hard-bind',
+    exact: true,
+    component: ChildrenApiPropPassing.HardboundContainer,
+    key: 'ChildrenApiPropPassing.HardboundContainer'
+  },
+  {
+    path: '/patterns/children-api/prop-passing/with-child-prop',
+    exact: true,
+    component: ChildrenApiPropPassing.ContainerWithChildrenProp,
+    key: 'ChildrenApiPropPassing.ContainerWithChildrenProp'
   }
 ]
