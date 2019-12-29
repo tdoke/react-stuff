@@ -1,8 +1,12 @@
-1] using react children api
-2] container and presentational component
-3] passing component to parent component
-4] passing function to parent component
-5] passing function as children to parent component
-6] compounded component
-7] container with reducer hooks 
-8] DI in react
+REACT COMPOSITION PATTERNS
+1] using react children api == done
+2] passing a react component as a prop
+3] passing a function as a prop(renderProp)
+4] passing a function as a children prop
+5] hoc
+6] Presentational and container components
+7] compounded component
+8] container with reducer hooks 
+9] DI in react
+
+how to keep component composition as loose as possible ? above are the 9 ways to do it.
