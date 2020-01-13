@@ -29,8 +29,8 @@ function App() {
           <Link to="/patterns/children-api/header-with-child-prop">patterns: children api / header with children prop</Link>
           <Link to="/patterns/children-api/prop-passing/hard-bind">patterns: children api / container with hard binding child</Link>
           <Link to="/patterns/children-api/prop-passing/with-child-prop">patterns: children api / container with children prop</Link>
-
-
+          <Link to="/patterns/component-as-prop/basic">patterns: component as prop / container with component prop</Link>
+          <Link to="/patterns/component-as-prop/slots">patterns: component as prop / slots</Link>
         </div>
         <div className='content'><RoutesConfig appRoutes={routes} /></div>
       </div>
