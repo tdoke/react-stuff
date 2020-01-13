@@ -1,6 +1,6 @@
 REACT COMPOSITION PATTERNS
 1] using react children api == done
-2] passing a react component as a prop
+2] passing a react component as a prop == done
 3] passing a function as a prop(renderProp)
 4] passing a function as a children prop
 5] hoc
