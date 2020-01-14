@@ -10,3 +10,6 @@ REACT COMPOSITION PATTERNS
 9] DI in react
 
 how to keep component composition as loose as possible ? above are the 9 ways to do it.
+
+imp
+1] minimise direct imports in a component, more imports less composible component is,

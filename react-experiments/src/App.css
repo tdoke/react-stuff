@@ -45,6 +45,8 @@
 
 .menu a {
   display: block;
+  text-align: left;
+  padding: 0.2rem 0.5rem;
 }
 
 .content {

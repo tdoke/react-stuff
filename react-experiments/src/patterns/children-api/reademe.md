@@ -11,9 +11,9 @@ Children Api can be used for
     <List />
   </EmployeeContainer>
 
-  2] Components that are closely bound to each other Select and option. Select can be container, accessing all the option elements using Children api
+  2] Components that are closely bound to each other Select and option. Select can be container, providing all the option elements as props and accessing option component using children api
 
-  3] Layout component taking in cards
+  3] Container Layout component taking in cards, something else.
      <ListLayout>
       {cards}
      </ListLayout>

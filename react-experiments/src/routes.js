@@ -13,6 +13,8 @@ import StatelessPropPassing from "./state-and-props/components-props/prop-passin
 import StatefulPropPassing from "./state-and-props/components-props/prop-passing-3-level/stateful-children/A";
 import Basic from "./patterns/children-api/basic";
 import ChildrenApiPropPassing from "./patterns/children-api/prop-passing";
+import { EmployeeContainerWithTable, EmployeeContainerWithList } from './patterns/children-api/EmployeeContainer';
+import ListLayout from './patterns/children-api/ListLayout';
 import BasicComponentAsProp from "./patterns/component-as-prop/basic";
 import Slots from './patterns/component-as-prop/slots';
 
@@ -112,6 +114,24 @@ export default [
     exact: true,
     component: ChildrenApiPropPassing.ContainerWithChildrenProp,
     key: "ChildrenApiPropPassing.ContainerWithChildrenProp"
+  },
+  {
+    path: "/patterns/children-api/employee-container-with-table",
+    exact: true,
+    component: EmployeeContainerWithTable,
+    key: "EmployeeContainerWithTable"
+  },
+  {
+    path: "/patterns/children-api/employee-container-with-list",
+    exact: true,
+    component: EmployeeContainerWithList,
+    key: "EmployeeContainerWithList"
+  },
+  {
+    path: "/patterns/children-api/list-layout",
+    exact: true,
+    component: ListLayout,
+    key: "ListLayout"
   },
   {
     path: "/patterns/component-as-prop/basic",
