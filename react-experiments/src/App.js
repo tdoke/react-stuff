@@ -34,6 +34,8 @@ function App() {
           <Link to="/patterns/children-api/list-layout">patterns: children api / container with children array</Link>
           <Link to="/patterns/component-as-prop/basic">patterns: component as prop / container with component prop</Link>
           <Link to="/patterns/component-as-prop/slots">patterns: component as prop / slots</Link>
+          <Link to="/patterns/render-props/emp-container-list">patterns: renderprops / employeecontainer-list</Link>
+          <Link to="/patterns/render-props/emp-container-table">patterns: renderprops / employeecontainer-table</Link>
         </div>
         <div className='content'><RoutesConfig appRoutes={routes} /></div>
       </div>

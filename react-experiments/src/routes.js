@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import TimeTicker from "./jsx/TimeTicker";
 import MountExample from "./component-lifecycles/Mount";
 import UpdateExample from "./component-lifecycles/Update";
@@ -13,10 +13,17 @@ import StatelessPropPassing from "./state-and-props/components-props/prop-passin
 import StatefulPropPassing from "./state-and-props/components-props/prop-passing-3-level/stateful-children/A";
 import Basic from "./patterns/children-api/basic";
 import ChildrenApiPropPassing from "./patterns/children-api/prop-passing";
-import { EmployeeContainerWithTable, EmployeeContainerWithList } from './patterns/children-api/EmployeeContainer';
-import ListLayout from './patterns/children-api/ListLayout';
+import {
+  EmployeeContainerWithTable,
+  EmployeeContainerWithList
+} from "./patterns/children-api/EmployeeContainer";
+import ListLayout from "./patterns/children-api/ListLayout";
 import BasicComponentAsProp from "./patterns/component-as-prop/basic";
-import Slots from './patterns/component-as-prop/slots';
+import Slots from "./patterns/component-as-prop/slots";
+import {
+  EmployeeContainerWithListRenderProp,
+  EmployeeContainerWithTableRenderProp
+} from "./patterns/render-prop/EmployeeContainer";
 
 export default [
   {
@@ -138,7 +145,8 @@ export default [
     exact: true,
     component: () => (
       <div>
-        <BasicComponentAsProp result={true}/> <BasicComponentAsProp result={false} />
+        <BasicComponentAsProp result={true} />{" "}
+        <BasicComponentAsProp result={false} />
       </div>
     ),
     key: "BasicComponentAsProp"
@@ -148,5 +156,17 @@ export default [
     exact: true,
     component: Slots,
     key: "Slots"
+  },
+  {
+    path: "/patterns/render-props/emp-container-list",
+    exact: true,
+    component: EmployeeContainerWithListRenderProp,
+    key: "EmployeeContainerWithListRenderProp"
+  },
+  {
+    path: "/patterns/render-props/emp-container-table",
+    exact: true,
+    component: EmployeeContainerWithTableRenderProp,
+    key: "EmployeeContainerWithTableRenderProp"
   }
 ];

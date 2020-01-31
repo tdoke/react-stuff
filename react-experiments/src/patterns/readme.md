@@ -4,6 +4,8 @@ REACT COMPOSITION PATTERNS
 3] passing a function as a prop(renderProp)
 4] passing a function as a children prop
 5] hoc
+6] hooks
+7] hoc vs renderProps vs hooks
 6] Presentational and container components
 7] compounded component
 8] container with reducer hooks 
