@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 const employees = [
   { id: 1, name: "Trushant", department: "IT" },
   { id: 2, name: "Doke", department: "MANAGEMENT" }

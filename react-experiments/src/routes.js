@@ -25,6 +25,13 @@ import {
   EmployeeContainerWithTableRenderProp
 } from "./patterns/render-prop/EmployeeContainer";
 
+import {
+  TableWithEmployeeHOC,
+  ListWithEmployeeHOC
+} from "./patterns/hoc/EmployeeHOC";
+
+import { TableWithEmployeeHook, ListWithEmployeeHook } from "./patterns/hooks";
+
 export default [
   {
     path: "/jsx",
@@ -168,5 +175,29 @@ export default [
     exact: true,
     component: EmployeeContainerWithTableRenderProp,
     key: "EmployeeContainerWithTableRenderProp"
+  },
+  {
+    path: "/patterns/hoc/table-with-emp-hoc",
+    exact: true,
+    component: TableWithEmployeeHOC,
+    key: "TableWithEmployeeHOC"
+  },
+  {
+    path: "/patterns/hoc/list-with-emp-hoc",
+    exact: true,
+    component: ListWithEmployeeHOC,
+    key: "ListWithEmployeeHOC"
+  },
+  {
+    path: "/patterns/hook/table-with-emp-hook",
+    exact: true,
+    component: TableWithEmployeeHook,
+    key: "TableWithEmployeeHook"
+  },
+  {
+    path: "/patterns/hook/list-with-emp-hook",
+    exact: true,
+    component: ListWithEmployeeHook,
+    key: "ListWithEmployeeHook"
   }
 ];

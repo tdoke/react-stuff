@@ -36,6 +36,10 @@ function App() {
           <Link to="/patterns/component-as-prop/slots">patterns: component as prop / slots</Link>
           <Link to="/patterns/render-props/emp-container-list">patterns: renderprops / employeecontainer-list</Link>
           <Link to="/patterns/render-props/emp-container-table">patterns: renderprops / employeecontainer-table</Link>
+          <Link to="/patterns/hoc/table-with-emp-hoc">patterns: hoc / employeehoc-table</Link>
+          <Link to="/patterns/hoc/list-with-emp-hoc">patterns: hoc / employeehoc-list</Link>
+          <Link to="/patterns/hook/table-with-emp-hook">patterns: hooks / employee-hook-table</Link>
+          <Link to="/patterns/hook/list-with-emp-hook">patterns: hooks / employee-hook-list</Link>
         </div>
         <div className='content'><RoutesConfig appRoutes={routes} /></div>
       </div>
