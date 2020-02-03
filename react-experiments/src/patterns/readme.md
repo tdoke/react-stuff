@@ -10,6 +10,7 @@ REACT COMPOSITION PATTERNS
 7] compounded component
 8] container with reducer hooks 
 9] DI in react
+10] reducer hooks 
 
 how to keep component composition as loose as possible ? above are the 9 ways to do it.
 
