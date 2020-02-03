@@ -1,12 +1,8 @@
-import React, { useEffect, useState } from "react";
-import fetchEmployees from "./fetchEmployees";
+import React from "react";
+import { useEmployees } from "./useEmployees";
 
 const EmployeeList = () => {
-  const [employees, setEmployees] = useState([]);
-
-  useEffect(() => {
-    fetchEmployees().then(emps => setEmployees(emps));
-  }, []);
+  const employees = useEmployees();
   
   return (
     <ol>

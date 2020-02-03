@@ -1,13 +1,9 @@
-import React, { useEffect, useState } from "react";
-import fetchEmployees from "./fetchEmployees";
+import React from "react";
+import { useEmployees } from "./useEmployees";
 
 const Table = () => {
-  const [employees, setEmployees] = useState([]);
+  const employees = useEmployees();
 
-  useEffect(() => {
-    fetchEmployees().then(emps => setEmployees(emps));
-  }, []);
-  
   return (
     <table>
       <tbody>
