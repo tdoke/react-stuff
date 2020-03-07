@@ -31,6 +31,9 @@ import {
 } from "./patterns/hoc/EmployeeHOC";
 
 import { TableWithEmployeeHook, ListWithEmployeeHook } from "./patterns/hooks";
+import HOCExample from "./patterns/hoc-hooks-renderprops/hoc";
+import RenderPropCompose from './patterns/hoc-hooks-renderprops/render-prop';
+import HooksCompose from './patterns/hoc-hooks-renderprops/hooks/';
 
 export default [
   {
@@ -199,5 +202,23 @@ export default [
     exact: true,
     component: ListWithEmployeeHook,
     key: "ListWithEmployeeHook"
+  },
+  {
+    path: "/patterns/hoc-hooks-renderprops/hoc",
+    exact: true,
+    component: HOCExample,
+    key: "HOCExample"
+  },
+  {
+    path: "/patterns/hoc-hooks-renderprops/render-prop",
+    exact: true,
+    component: RenderPropCompose,
+    key: "RenderPropCompose"
+  },
+  {
+    path: "/patterns/hoc-hooks-renderprops/hooks",
+    exact: true,
+    component: HooksCompose,
+    key: "HooksCompose"
   }
 ];
