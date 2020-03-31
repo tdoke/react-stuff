@@ -95,6 +95,12 @@ function App() {
           <Link to="/patterns/hoc-hooks-renderprops/hooks">
             patterns: hoc-hooks-renderprops / hooks
           </Link>
+          <Link to="/profiler/mousetracker">
+            mouse tracker with profile
+          </Link>
+          <Link to="/i18n">
+            i18n
+          </Link>
         </div>
         <div className="content">
           <RoutesConfig appRoutes={routes} />

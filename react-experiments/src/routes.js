@@ -34,6 +34,8 @@ import { TableWithEmployeeHook, ListWithEmployeeHook } from "./patterns/hooks";
 import HOCExample from "./patterns/hoc-hooks-renderprops/hoc";
 import RenderPropCompose from './patterns/hoc-hooks-renderprops/render-prop';
 import HooksCompose from './patterns/hoc-hooks-renderprops/hooks/';
+import WithProfiler from './profiler';
+import WithTrans from './i18n';
 
 export default [
   {
@@ -220,5 +222,17 @@ export default [
     exact: true,
     component: HooksCompose,
     key: "HooksCompose"
+  },
+  {
+    path: "/profiler/mousetracker",
+    exact: true,
+    component: WithProfiler,
+    key: "withProfiler"
+  },
+  {
+    path: "/i18n",
+    exact: true,
+    component: WithTrans,
+    key: "WithTrans"
   }
 ];
