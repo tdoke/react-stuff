@@ -3,12 +3,18 @@ also refer dan abramoves blog about how reactDom.render works
 https://reactjs.org/blog/2015/12/18/react-components-elements-and-instances.html
 
 1] how DOM works.  === done
-2] how browser interprets DOM
-3] how jsx is converted to React.CreateElement scripts
-4] how react component is converted to basic js object
-5] virtual DOM and output of React.CreateElement
+2] how browser interprets DOM === done
+4] how react component is converted to a tree of react elements
+5] what is virtual dom and how it is built from tree of react elements
 6] what happens when setState is called on a container / props passed
      to a component change
-7] how diffing works
-8] how reconciliation works
+7] how reconciliation works
 
+reconciliation starts when ReactDOM.render is called or .setState is called in a component, it works in 2 parts
+ part 1] build or change virtual dom tree by traversing the tree of react elements generated from root component
+ part 2] compare virtual dom with previous virtual DOM find differences
+ part 3] commit differences found in step 2] to real DOM.
+
+ optimization: reduce the number of (un necesssary) differences between current virtual DOM and previous virtual DOM 
+
+https://github.com/rohan-paul/Awesome-JavaScript-Interviews/blob/master/React/Virtual-DOM-and-Reconciliation-Algorithm.md
