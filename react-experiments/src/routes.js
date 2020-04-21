@@ -34,6 +34,8 @@ import { TableWithEmployeeHook, ListWithEmployeeHook } from "./patterns/hooks";
 import HOCExample from "./patterns/hoc-hooks-renderprops/hoc";
 import RenderPropCompose from './patterns/hoc-hooks-renderprops/render-prop';
 import HooksCompose from './patterns/hoc-hooks-renderprops/hooks/';
+import ReducerHookExample from './patterns/reducer-hook';
+import ReducerHookWithContext from './patterns/context-as-state';
 import WithProfiler from './profiler';
 import WithTrans from './i18n';
 
@@ -222,6 +224,18 @@ export default [
     exact: true,
     component: HooksCompose,
     key: "HooksCompose"
+  },
+  {
+    path: "/patterns/hooks/reducerhook",
+    exact: true,
+    component: ReducerHookExample,
+    key: "ReducerHookExample"
+  },
+  {
+    path: "/patterns/hooks/reducerhook-with-context",
+    exact: true,
+    component: ReducerHookWithContext,
+    key: "ReducerHookWithContext"
   },
   {
     path: "/profiler/mousetracker",

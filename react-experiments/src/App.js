@@ -95,6 +95,12 @@ function App() {
           <Link to="/patterns/hoc-hooks-renderprops/hooks">
             patterns: hoc-hooks-renderprops / hooks
           </Link>
+          <Link to="/patterns/hooks/reducerhook">
+            patterns: reducer hooks example
+          </Link>
+          <Link to='/patterns/hooks/reducerhook-with-context'>
+            patterns: reducer hook with context
+          </Link>
           <Link to="/profiler/mousetracker">
             mouse tracker with profile
           </Link>
