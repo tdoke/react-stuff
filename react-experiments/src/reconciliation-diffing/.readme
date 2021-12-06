@@ -18,3 +18,15 @@ reconciliation starts when ReactDOM.render is called or .setState is called in a
  optimization: reduce the number of (un necesssary) differences between current virtual DOM and previous virtual DOM 
 
 https://github.com/rohan-paul/Awesome-JavaScript-Interviews/blob/master/React/Virtual-DOM-and-Reconciliation-Algorithm.md
+
+How react works
+1] when setState is called on a component or ReactDom.render is called, React rebuilds the DOM tree under it , there by creating new virtual DOM 
+2] how react creates virtual DOM tree (https://reactjs.org/blog/2015/12/18/react-components-elements-and-instances.html)
+3] this created virtual DOM is a tree of primitive react elements.
+4] this new virtual DOM is compared with old virtual DOM, process called as diffing, reconciliation
+5] diffing has 2 rules 
+5.1] nodes are compared through BFS
+5.2] if two nodes are mismatching , entire subtree is replaced by new nodes
+5.3] while comparing lists react relies on key to find differences between two lists
+6] react pushes result of diffing to real DOM.
+
