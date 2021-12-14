@@ -38,6 +38,7 @@ import ReducerHookExample from './patterns/reducer-hook';
 import ReducerHookWithContext from './patterns/context-as-state';
 import WithProfiler from './profiler';
 import WithTrans from './i18n';
+import Portals from './portals/Parent';
 
 export default [
   {
@@ -248,5 +249,11 @@ export default [
     exact: true,
     component: WithTrans,
     key: "WithTrans"
+  },
+  {
+    path: "/portals",
+    exact: true,
+    component: Portals,
+    key: "Portals"
   }
 ];

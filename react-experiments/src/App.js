@@ -107,6 +107,9 @@ function App() {
           <Link to="/i18n">
             i18n
           </Link>
+          <Link to="/portals">
+            portals
+          </Link>
         </div>
         <div className="content">
           <RoutesConfig appRoutes={routes} />
