@@ -110,6 +110,9 @@ function App() {
           <Link to="/portals">
             portals
           </Link>
+          <Link to="/suspense-with-lazy">
+            suspense with lazy
+          </Link>
         </div>
         <div className="content">
           <RoutesConfig appRoutes={routes} />

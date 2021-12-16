@@ -39,6 +39,7 @@ import ReducerHookWithContext from './patterns/context-as-state';
 import WithProfiler from './profiler';
 import WithTrans from './i18n';
 import Portals from './portals/Parent';
+import SuspenseWithLazy from './suspense-lazy/';
 
 export default [
   {
@@ -255,5 +256,11 @@ export default [
     exact: true,
     component: Portals,
     key: "Portals"
+  },
+  {
+    component: SuspenseWithLazy,
+    path: "/suspense-with-lazy",
+    exact: true,
+    key: "SuspenseWithLazy"
   }
 ];
