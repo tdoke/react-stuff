@@ -40,6 +40,7 @@ import WithProfiler from './profiler';
 import WithTrans from './i18n';
 import Portals from './portals/Parent';
 import SuspenseWithLazy from './suspense-lazy/';
+import BasicRef from './refs/BasicRef';
 
 export default [
   {
@@ -262,5 +263,11 @@ export default [
     path: "/suspense-with-lazy",
     exact: true,
     key: "SuspenseWithLazy"
+  },
+  {
+    component: BasicRef,
+    path: "/basic-ref",
+    exact: true,
+    key: "BasicRef"
   }
 ];

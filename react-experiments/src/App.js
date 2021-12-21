@@ -113,6 +113,9 @@ function App() {
           <Link to="/suspense-with-lazy">
             suspense with lazy
           </Link>
+          <Link to="/basic-ref">
+            Basic ref
+          </Link>
         </div>
         <div className="content">
           <RoutesConfig appRoutes={routes} />
