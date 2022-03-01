@@ -1,18 +1,43 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import App from 'components/App';
-import CommentBox from 'components/CommentBox';
-import CommentList from 'components/CommentList';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
+import { render, fireEvent, waitFor, screen } from '@testing-library/react'
+import TestComponent from '../App';
 
-let wrapper;
-beforeEach(() => {
-  wrapper = shallow(<App />)
-})
+const mockStore = configureStore([]);
 
-it('has one instance of component CommentBox', () => {
-  expect(wrapper.find(CommentBox).length).toEqual(1)
-})
 
-it('has one instance of component CommentList', () => {
-  expect(wrapper.find(CommentList).length).toEqual(1)
-})
+describe('TestComponent', () => {
+  let props;
+  let getComponent;
+  let store;
+
+
+  beforeEach(() => {
+    props = {};
+    store = mockStore({
+      comments: []
+    });
+    getComponent = () => render(<Provider store={store}>
+      <TestComponent {...props} />
+      </Provider>);
+  });
+
+  describe('render', () => {
+    
+    it('TestComponent should render with empty list', () => {
+      const { getByTestId } = getComponent();
+      expect(getByTestId('commentsList')).toMatchSnapshot();
+    });
+
+    it('TestComponent should render with one list item', async () => {
+      const { getByTestId } = getComponent();
+      const input = getByTestId('comment-value');
+      const submitBtn = getByTestId('button-submit');
+      fireEvent.change(input, {target: {value: 'test-comment'}});
+      fireEvent.click(submitBtn);
+      await waitFor(() => screen.getByTestId('commentsList'));
+      expect(getByTestId('commentsList')).toMatchSnapshot();
+    });
+  });
+});

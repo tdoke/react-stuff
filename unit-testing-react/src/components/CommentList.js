@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 export const CommentsList = (props) => {
   return (<div>
-    <ul>
+    <ul data-testid='commentsList'>
       {
         props.comments.map((comment, index) => <li key={index}>{comment}</li>)
       }

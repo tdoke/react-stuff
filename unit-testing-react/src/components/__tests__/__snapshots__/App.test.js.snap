@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TestComponent render TestComponent should render with empty list 1`] = `
+<ul
+  data-testid="commentsList"
+/>
+`;
+
+exports[`TestComponent render TestComponent should render with one list item 1`] = `
+<ul
+  data-testid="commentsList"
+/>
+`;
