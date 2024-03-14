@@ -1,0 +1,81 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "title": "a title",
+      "views": 100
+    },
+    {
+      "id": "2",
+      "title": "another title",
+      "views": 200
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "text": "a comment about post 1",
+      "postId": "1"
+    },
+    {
+      "id": "2",
+      "text": "another comment about post 1",
+      "postId": "1"
+    }
+  ],
+  "employees": [
+    {
+      "id": 1,
+      "name": "trushant",
+      "location": "thane,mumbai"
+    },
+    {
+      "id": 2,
+      "name": "sadashiv",
+      "location": "thane,mumbai"
+    },
+    {
+      "id": 3,
+      "name": "doke",
+      "location": "thane,mumbai"
+    },
+    {
+      "id": 4,
+      "name": "baburao",
+      "location": "thane,mumbai"
+    },
+    {
+      "id": 5,
+      "name": "vasant keshav oak",
+      "location": "thane,mumbai"
+    },
+    {
+      "id": 6,
+      "name": "johnny",
+      "location": "thane, mumbai"
+    },
+    {
+      "id": 6,
+      "name": "johnny",
+      "location": "thane, mumbai"
+    },
+    {
+      "id": 6,
+      "name": "johnny",
+      "location": "thane, mumbai"
+    },
+    {
+      "id": 6,
+      "name": "johnny",
+      "location": "thane, mumbai"
+    },
+    {
+      "id": 6,
+      "name": "johnny",
+      "location": "thane, mumbai"
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
