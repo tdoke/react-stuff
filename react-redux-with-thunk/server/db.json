@@ -25,54 +25,9 @@
   ],
   "employees": [
     {
-      "id": 1,
+      "id": "NeVGxFKjHR49eghDEVZ5M",
       "name": "trushant",
-      "location": "thane,mumbai"
-    },
-    {
-      "id": 2,
-      "name": "sadashiv",
-      "location": "thane,mumbai"
-    },
-    {
-      "id": 3,
-      "name": "doke",
-      "location": "thane,mumbai"
-    },
-    {
-      "id": 4,
-      "name": "baburao",
-      "location": "thane,mumbai"
-    },
-    {
-      "id": 5,
-      "name": "vasant keshav oak",
-      "location": "thane,mumbai"
-    },
-    {
-      "id": 6,
-      "name": "johnny",
-      "location": "thane, mumbai"
-    },
-    {
-      "id": 6,
-      "name": "johnny",
-      "location": "thane, mumbai"
-    },
-    {
-      "id": 6,
-      "name": "johnny",
-      "location": "thane, mumbai"
-    },
-    {
-      "id": 6,
-      "name": "johnny",
-      "location": "thane, mumbai"
-    },
-    {
-      "id": 6,
-      "name": "johnny",
-      "location": "thane, mumbai"
+      "location": "mumbai"
     }
   ],
   "profile": {
