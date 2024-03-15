@@ -23,13 +23,7 @@
       "postId": "1"
     }
   ],
-  "employees": [
-    {
-      "id": "NeVGxFKjHR49eghDEVZ5M",
-      "name": "trushant",
-      "location": "mumbai"
-    }
-  ],
+  "employees": [],
   "profile": {
     "name": "typicode"
   }
