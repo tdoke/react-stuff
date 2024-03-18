@@ -1,13 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const AddEmployee = ({ saveEmployee }) => {
+const AddORUpdateEmployee = ({ saveEmployee, employeeToUpdate }) => {
     const [name, setName] = useState("");
     const [location, setLocation] = useState("");
+
+    useEffect(() => { 
+        if (employeeToUpdate) {
+        setName(employeeToUpdate.name);
+        setLocation(employeeToUpdate.location);
+        }
+    }, [employeeToUpdate])
 
     const handleSubmitBtnClick = () => {
         const emp = {
             name,
-            location
+            location,
+            ...(employeeToUpdate) ? { id: employeeToUpdate.id } : {}
         };
         saveEmployee(emp);
         setName("");
@@ -29,4 +37,4 @@ const AddEmployee = ({ saveEmployee }) => {
     </>);
 }
  
-export default AddEmployee;
+export default AddORUpdateEmployee;

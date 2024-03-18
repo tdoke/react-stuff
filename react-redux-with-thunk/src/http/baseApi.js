@@ -10,3 +10,4 @@ const httpClient = axios.create({
 export const makeGet = (...params) => httpClient.get(...params);
 export const makePost = (...params) => httpClient.post(...params);
 export const makeDelete = (...params) => httpClient.delete(...params);
+export const makePut = (...params) => httpClient.put(...params);
