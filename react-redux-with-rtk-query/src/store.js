@@ -1,16 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit';
 import employees from './AddAndShowEmployee/store/reducers/employees';
-import { jsonServerApi } from './api';
+import { rtkQueryApi } from './rtkQueryApi';
 
 const reducer = {
   employees,
-  [jsonServerApi.reducerPath]: jsonServerApi.reducer
+  [rtkQueryApi.reducerPath]: rtkQueryApi.reducer
 };
 
 const store = configureStore({
   reducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(jsonServerApi.middleware),
+    getDefaultMiddleware().concat(rtkQueryApi.middleware),
 });
 
 export default store;

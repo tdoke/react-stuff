@@ -1,12 +1,22 @@
+import { useState } from "react";
+import { patchQueries } from "../../rtkQueryApi";
 import ShowCompanies from "../components/ShowCompanies";
 import AddCompany from "../components/AddCompany";
-import { useAddNewCompanyMutation, useGetCompaniesQuery, useDeleteCompanyMutation } from "../../api";
+import { getAddAndShowCompaniesQueries } from '../queries';
 
+const {
+    useGetCompaniesQuery,
+    useAddNewCompanyMutation,
+    useDeleteCompanyMutation,
+    useUpdateCompanyMutation
+} = patchQueries(getAddAndShowCompaniesQueries);
 
-const AddShowCompaniesContainer = () => {
-    const { data: companies = []} = useGetCompaniesQuery();
+export const AddShowCompaniesContainer = () => {
+    const [compToUpdate, setCompToUpdate] = useState(undefined);
+    const { data: companies = [] } = useGetCompaniesQuery();
     const [addNewCompany] = useAddNewCompanyMutation();
     const [deleteCompany] = useDeleteCompanyMutation();
+    const [updateCompany] = useUpdateCompanyMutation();
 
     const addNewCompanyMutation = async (company) => {
         try {
@@ -26,10 +36,18 @@ const AddShowCompaniesContainer = () => {
         }
     };
 
-    return (<>
-        <AddCompany addNewCompanyMutation={addNewCompanyMutation} />
-        <ShowCompanies companies={companies} deleteCompanyMutation={deleteCompanyMutation} />
-    </>)
-}
+    const updateCompanyMutation = async (company) => {
+        try {
+            await updateCompany(company)
+                .unwrap();
+            setCompToUpdate(undefined);
+        } catch (error) {
+            console.log("error updating a company", error);
+        }
+    };
 
-export default AddShowCompaniesContainer;
+    return (<>
+        <AddCompany addNewCompanyMutation={addNewCompanyMutation} updateCompanyMutation={updateCompanyMutation} companyToUpdate={compToUpdate} />
+        <ShowCompanies companies={companies} deleteCompanyMutation={deleteCompanyMutation} updateCompany={setCompToUpdate} />
+    </>)
+};

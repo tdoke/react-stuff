@@ -1,13 +1,15 @@
+import { lazy } from 'react';
 import './App.css';
 import AddAndShowEmployeesContainer from './AddAndShowEmployee/container';
-import AddAndShowCompanies from './AddAndShowCompanies/container';
+const AddShowCompaniesContainer = lazy(() => import('./AddAndShowCompanies/'));
+
 
 function App() {
     return (
     <>
-      <AddAndShowEmployeesContainer/>
+      <AddAndShowEmployeesContainer />
       <div>----------------------------------</div>
-      <AddAndShowCompanies/>
+      <AddShowCompaniesContainer />
     </>
   );
 }
