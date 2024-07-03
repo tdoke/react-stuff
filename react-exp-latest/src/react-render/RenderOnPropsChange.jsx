@@ -1,24 +1,29 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 
 const Todo = ({ todo }) => {
     console.log("render todo");
-    return (<>{todo}</>  );
+    return (<>{todo}</>);
 }
 const Count = ({ count }) => {
     console.log("render count");
-    return (<>{count}</>  );
+    return (<>{count}</>);
 }
 const Profile = ({ profile }) => {
     console.log("render profile");
     return (<>{JSON.stringify(profile)}</>);
 }
+const MemoizedProfile = memo(Profile, (prevProps, nextProps) => {
+    return (prevProps.profile.fname === nextProps.profile.fname &&
+        prevProps.profile.lname === nextProps.profile.lname)
+})
+
 const FamilyMembers = ({ familyMembers }) => {
     console.log("render familyMembers");
     return (<>{JSON.stringify(familyMembers)}</>);
 }
 
 
- 
+
 export const RenderOnPropsChange = () => {
     const [todo, setTodo] = useState("");
     const [count, setCount] = useState(0);
@@ -32,13 +37,14 @@ export const RenderOnPropsChange = () => {
         <button onClick={() => setCount(1)}>updateCount</button>
         <button onClick={() => setProfile({ fname: 'trushant', lname: 'doke' })}>updateProfile</button>
         <button onClick={() => setFamilyMembers(['mother', 'father', 'daughter', 'wife'])}>updateFamilyMembers</button>
-        <br/>
+        <br />
         <Todo todo={todo} />
-        <br/>
+        <br />
         <Count count={count} />
-        <br/>
-        <Profile profile={profile} />
-        <br/>
+        <br />
+        {/* <Profile profile={profile} /> */}
+        <MemoizedProfile profile={profile} />
+        <br />
         <FamilyMembers familyMembers={familyMembers} />
     </>);
 }

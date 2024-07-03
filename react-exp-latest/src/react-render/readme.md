@@ -12,4 +12,10 @@ https://blog.isquaredsoftware.com/2023/08/presentations-react-rendering-behavior
 *if its child components current reference dont match with previous reference.
 
 3] Improving Rendering Performance
+*use React.memo -> refer MemoizedProfile
+React.memo(): controlled by the child component
+*useMemo
+*use same element reference:
+if a React component returns the exact same element reference in its render output as it did the last time, React will skip re-rendering that particular child.skipping rendering a component means React will also skip rendering that entire subtree, because it's effectively putting a stop sign up to halt the default "render children recursively" behavior.
+
 
