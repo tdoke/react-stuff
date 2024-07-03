@@ -16,3 +16,9 @@ export const RenderOnStateChange = () => {
         <button onClick={() => setFamilyMembers(['mother', 'father', 'daughter', 'wife'])}>updateFamilyMembers</button>
     </>);
 }
+
+/** 
+ * 1] When setProfile, setFamilyMembers is called, ever time, they set new object/array reference on state.
+ *    Thus useState returns a new reference, component is rerendered each time when setProfile / setFamilyMembers are called.
+ *    even though content of profile , familyMembers state remains same.
+*/

@@ -35,6 +35,23 @@
   ],
   "employees": [],
   "companies": [],
+  "countries": [
+    {
+      "id": "1",
+      "name": "USA",
+      "economy": "10 trillion"
+    },
+    {
+      "id": "2",
+      "name": "China",
+      "economy": "5 trillion"
+    },
+    {
+      "id": "3",
+      "name": "India",
+      "economy": "1 trillion"
+    }
+  ],
   "profile": {
     "name": "typicode"
   }
