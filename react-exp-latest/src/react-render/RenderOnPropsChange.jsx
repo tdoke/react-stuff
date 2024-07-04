@@ -1,4 +1,4 @@
-import { memo, useState } from "react";
+import { memo, useMemo, useState } from "react";
 
 const Todo = ({ todo }) => {
     console.log("render todo");
@@ -32,13 +32,16 @@ export const RenderOnPropsChange = () => {
         lname: ''
     });
     const [familyMembers, setFamilyMembers] = useState([]);
+
+    const memoizedTodo = useMemo(() => <Todo todo={todo} />, [todo]);
     return (<>
         <button onClick={() => setTodo("todo1")}>updateTodo</button>
         <button onClick={() => setCount(1)}>updateCount</button>
         <button onClick={() => setProfile({ fname: 'trushant', lname: 'doke' })}>updateProfile</button>
         <button onClick={() => setFamilyMembers(['mother', 'father', 'daughter', 'wife'])}>updateFamilyMembers</button>
         <br />
-        <Todo todo={todo} />
+        {/* <Todo todo={todo} /> */}
+        {memoizedTodo}
         <br />
         <Count count={count} />
         <br />
