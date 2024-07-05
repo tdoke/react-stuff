@@ -1,0 +1,43 @@
+why to use react hooks
+1] weird class syntax, which react team accepted with arrival of es6 classes
+2] state: u can use state in functional components with very less verbose way compared to classes
+3] lifecycle methods: there is lot of code repetition in life cycle methods, hooks avoid that.
+4] ****sharing of non visual logic: to share non visual logic across components, react either uses HOC'S or Render props, both dont 
+  scale very well. Hooks solve this problem.
+  
+  function useRepos(id) {
+  const [repos, setRepos] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    setLoading(true);
+
+    fetchRepos(id).then((repos) => {
+      setRepos(repos);
+      setLoading(false);
+    });
+  }, [id]);
+
+  return [loading, repos];
+}
+What's nice is any logic that's related to fetching our repos can be abstracted inside of this custom Hook. 
+Now, regardless of which component we're in and even though it's non-visual logic, 
+whenever we need data regarding repos, we can consume our useRepos custom Hook.
+
+function ReposGrid ({ id }) {
+  const [ loading, repos ] = useRepos(id)
+
+  ...
+}
+function Profile ({ user }) {
+  const [ loading, repos ] = useRepos(user.id)
+
+  ...
+}
+
+6] Any non visual logic, u can express in a hook. and use that hook across components that need it.
+eg. useSelector, useDispatch, 
+a hook to know browser name,
+a hook to know device types,
+please check site https://usehooks.com/, it has huge collection of customised hooks.
+
