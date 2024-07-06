@@ -1,0 +1,10 @@
+1] state setter function is called inside event handler
+2] when user clicks on button, event handler gets executed. and state setter function is moved to a queue.
+3] after all event handlers are executed. react knows that it has state setter function in queue. so it executes state setter 
+function from queue. and rerenders the component with new state.
+4] component returns a jsx snapshot with event handlers.
+5] react calculates the diffs and updates the dom.
+6] https://react.dev/learn/state-as-a-snapshot
+7] each render of a functional component, has its own instances of state,props, functions, event handler functions, jsx children.
+8] state is readonly during the render. react queues all state updates, runs them after the current render.
+and passes the new state as read only input to next render. 
