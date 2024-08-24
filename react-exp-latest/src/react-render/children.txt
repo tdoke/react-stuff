@@ -1,0 +1,50 @@
+
+React memoization technique >> Same-element references: controlled by the parent component.
+
+There's also a lesser-known technique as well: if a React component returns the exact same element reference 
+in its render output as it did the last time, React will skip re-rendering that particular child. There's at 
+least a couple ways to implement this technique:
+
+If you include props.children in your output, that element is the same if this component does a state update
+If you wrap some elements with useMemo(), those will stay the same until the dependencies change
+
+// The `props.children` content won't re-render if we update state
+function SomeProvider({ children }) {
+  const [counter, setCounter] = useState(0);
+
+  return (
+    <div>
+      <button onClick={() => setCounter(counter + 1)}>Count: {counter}</button>
+      <OtherChildComponent />
+      {children}
+    </div>
+  );
+}
+
+function OptimizedParent() {
+  const [counter1, setCounter1] = useState(0);
+  const [counter2, setCounter2] = useState(0);
+
+  const memoizedElement = useMemo(() => {
+    // This element stays the same reference if counter 2 is updated,
+    // so it won't re-render unless counter 1 changes
+    return <ExpensiveChildComponent />;
+  }, [counter1]);
+
+  return (
+    <div>
+      <button onClick={() => setCounter1(counter1 + 1)}>
+        Counter 1: {counter1}
+      </button>
+      <button onClick={() => setCounter1(counter2 + 1)}>
+        Counter 2: {counter2}
+      </button>
+      {memoizedElement}
+    </div>
+  );
+}
+
+For all of these techniques, skipping rendering a component means React will also skip rendering that 
+entire subtree, because it's effectively putting a stop sign up to halt the default 
+"render children recursively" behavior.
+
