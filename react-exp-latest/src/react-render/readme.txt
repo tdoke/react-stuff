@@ -16,6 +16,9 @@ https://blog.isquaredsoftware.com/2023/08/presentations-react-rendering-behavior
 React.memo(): controlled by the child component
 *useMemo: controlled by parent component
 *use same element reference:
-if a React component returns the exact same element reference in its render output as it did the last time, React will skip re-rendering that particular child.skipping rendering a component means React will also skip rendering that entire subtree, because it's effectively putting a stop sign up to halt the default "render children recursively" behavior.
+if a React component returns the exact same element reference in its render output as it did the last time, 
+React will skip re-rendering that particular child.skipping rendering a component means React will 
+also skip rendering that entire subtree, because it's effectively putting a stop sign up to halt the 
+default "render children recursively" behavior.
 
 
