@@ -1,0 +1,8 @@
+Functions whose names start with use are called Hooks in React.
+
+Don’t call Hooks inside loops, conditions, or nested functions. Instead, always use Hooks at the top 
+level of your React function, before any early returns. You can only call Hooks while React is 
+rendering a function component:
+
+✅ Call them at the top level in the body of a function component.
+✅ Call them at the top level in the body of a custom Hook.

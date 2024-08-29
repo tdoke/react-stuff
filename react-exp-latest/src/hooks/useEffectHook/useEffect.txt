@@ -1,0 +1,236 @@
+The key to writing bug-free software is to maximize the predictability of your program. 
+One strategy to do that is to minimize and encapsulate the side effects in your program. 
+In English, a side effect is defined as "a secondary, typically undesirable effect." 
+Related, in programming, a side effect is a state change that can be observed outside of its local environment. 
+Said differently, a side effect is anything that interacts with the outside world (in our case, 
+"outside" meaning outside of the local function that's being executed). Mutating non-local variables, 
+making network requests, and updating the DOM are all examples of common side effects.
+
+function addTodo(todo) {
+  todos.push(todo);
+}
+function getGithubProfile(username) {
+  return fetch(
+    `https://api.github.com/users/${username}`,
+  ).then((res) => res.json());
+}
+function updateDocumentTitle(title) {
+  document.title = title;
+}
+
+Side Effects in React
+Because the encapsulation of side effects is so crucial, React comes with a built-in Hook to do just that called useEffect. 
+As the name suggests, useEffect allows you to perform side effects in function components. 
+Per our definition earlier, whenever you want to interact with the world outside of React 
+(whether that's to make a network request, manually update the DOM, etc.), you'd reach for useEffect.
+
+
+function Counter() {
+  const [count, setCount] = React.useState(0);
+
+  React.useEffect(() => {
+    console.count("In useEffect, after render");
+    document.title = `Count: ${count}`;
+  });
+
+  console.count("Rendering");
+
+  return (
+    <React.Fragment>
+      <button onClick={() => setCount((c) => c - 1)}>-</button>
+      <h1>Count: {count}</h1>
+      <button onClick={() => setCount((c) => c + 1)}>+</button>
+    </React.Fragment>
+  );
+}
+
+If you were to play around with the code above, you'd notice that Rendering always gets logged before
+In useEffect, after render. Again, by default, on every render (including the initial render), 
+the effect won't run until after React has updated the DOM and the browser has painted those updates to the view. 
+The reason for this timing is so the side effect doesn't block updates to the UI.
+
+Initial Render
+  count: 0
+  Effect (run after render):
+    () => document.title = `Count: 0`
+  Description of UI: ➖ 0 ➕
+
+  React: Updates the DOM
+  Browser: Re-paints with DOM updates
+  React invokes Effect:
+    () => document.title = `Count: 0`
+
+
+User clicks ➕ Button
+  React increments "count" by 1, causing a re-render
+
+
+Next Render
+  count: 1
+  Effect (run after render):
+    () => document.title = `Count: 1`
+  Description of UI: ➖ 1 ➕
+
+  React: Updates the DOM
+  Browser: Re-paints with DOM updates
+  React invokes Effect:
+    () => document.title = `Count: 1`
+
+
+User clicks ➖ Button
+  React decrements "count" by 1, causing a re-render
+
+
+Next Render
+  count: 0
+  Effect (run after render):
+    () => document.title = `Count: 0`
+  Description of UI: ➖ 0 ➕
+
+  React: Updates the DOM
+  Browser: Re-paints with DOM updates
+  React invokes Effect:
+    () => document.title = `Count: 0`
+
+--------------------------------------------------------------------------
+
+React.useEffect(() => {
+  // Will be invoked on the initial render
+  // and all subsequent re-renders.
+});
+React.useEffect(() => {
+  // Will be invoked on the initial render
+  // and when "id" or "authed" changes.
+}, [id, authed]);
+React.useEffect(() => {
+  // Will only be invoked on the initial render
+}, []);
+
+---------------------------------------------------------------
+Cleaning up side effects
+Let's imagine we're dealing with the same Github API as we saw earlier, but this time it's WebSocket based. Instead of making a single network request to get our data, we set up a listener to be notified whenever the data changes. In this scenario, we can't just set it and forget it. We need to make sure that we clean up our subscription whenever the component is removed from the DOM or when we no longer want to receive updates from the API. If not, we'll have a memory leak.
+
+This brings us to the last part of the useEffect API we haven't explored yet, the cleanup function. If you return a function from useEffect, React will make sure that function is invoked right before the component is removed from the DOM. Additionally, if your component is re-rendered, the cleanup function for the previous render's effect will be invoked before re-invoking the new effect.
+
+React.useEffect(() => {
+  return () => {
+    // invoked right before invoking
+    // the new effect on a re-render AND
+    // right before removing the component
+    // from the DOM
+  };
+});
+-----------------------------
+import { subscribe, unsubscribe } from './api'
+
+function Profile ({ username }) {
+  const [profile, setProfile] = React.useState(null)
+
+  React.useEffect(() => {
+    subscribe(username, setProfile)
+
+    return () => {
+      unsubscribe(username)
+      setProfile(null)
+    }
+  }, [username])
+
+  if (profile === null) {
+    return <p>Loading...</p>
+  }
+
+  return (
+    <React.Fragment>
+      <h1>@{profile.login}</h1>
+      <img
+         src={profile.avatar_url}
+         alt={`Avatar for ${profile.login}`}
+       />
+      <p>{profile.bio}</p>
+    </React.Fragment>
+  );
+}
+
+Initial Render
+  username prop: 'tylermcginnis'
+  profile: null
+  Effect:
+    () => subscribe('tylermcginnis', setProfile)
+  Cleanup:
+    () => unsubscribe('tylermcginnis')
+  Description of UI: Loading...
+
+  React: Updates the DOM
+  Browser: Re-paints with DOM updates
+  React invokes Effect:
+    () => subscribe('tylermcginnis', setProfile)
+
+
+setProfile was invoked
+  React updates 'profile', causing a re-render
+
+
+Next Render
+  username prop: 'tylermcginnis'
+  profile: {login: 'tylermcginnis', name: 'Tyler McGinnis'}...
+  Effect:
+    () => subscribe('tylermcginnis', setProfile)
+  Cleanup:
+    () => unsubscribe('tylermcginnis')
+  Description of UI: <h1>@tylermcginnis</h1>...
+
+  React: Updates the DOM
+  Browser: Re-paints with DOM updates
+  Effect: Skipped since 'username' didn't change.
+
+
+User event changes 'username' to 'sdras'
+
+
+Next Render
+  username prop: 'sdras'
+  profile: {login: 'tylermcginnis', name: 'Tyler McGinnis'}...
+  Effect:
+    () => subscribe('sdras', setProfile)
+  Cleanup:
+    () => unsubscribe('sdras')
+  Description of UI: <h1>@tylermcginnis</h1>...
+
+  React: Updates the DOM
+  Browser: Re-paints with DOM updates
+  React invokes previous render's cleanup:
+    () => unsubscribe('tylermcginnis')
+  React invokes Effect:
+    () => subscribe('sdras', setProfile)
+
+
+setProfile was invoked
+  React updates "profile", causing a re-render
+
+
+Next Render
+  username prop: 'sdrsa'
+  profile: {login: 'sdrsa', name: 'Sarah Drasner'}...
+  Effect:
+    () => subscribe('sdrsa', setProfile)
+  Cleanup:
+    () => unsubscribe('sdras')
+  Description of UI: <h1>@sdrsa</h1>...
+
+  React: Updates the DOM
+  Browser: Re-paints with DOM updates
+  Effect: Skipped since 'username' didn't change.
+-----------------------------------------------------
+To me, the most interesting part of that flow is how React prioritizes UI updates before worrying about 
+any of the effects. When username changes to sdras, React has to invoke the old cleanup for tylermcginnis, 
+then invoke the new effect for sdras. However, before it does any of that, React updates the DOM and the 
+browser repaints with the new UI.
+
+
+
+
+
+
+
+
+
