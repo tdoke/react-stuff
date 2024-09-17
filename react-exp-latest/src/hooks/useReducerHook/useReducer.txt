@@ -1,0 +1,1 @@
+1] use useReducer to avoid too many useState hooks in a component.

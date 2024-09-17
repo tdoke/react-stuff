@@ -1,0 +1,2 @@
+1] custom hook work exactly like react component, 
+but it does not have 'return (<>jsx markup</>)', it can return values, objects.

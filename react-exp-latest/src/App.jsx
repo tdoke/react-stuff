@@ -8,6 +8,9 @@ import UseEffectCounterTwo from './hooks/useEffectHook/CounterTwo'
 import UseEffectCounterThree from './hooks/useEffectHook/CounterThree'
 import RaceConditionWithFetch from './hooks/useEffectHook/RaceCondition/RaceConditionWithFetch'
 import RaceConditionWithFetchResolved from './hooks/useEffectHook/RaceCondition/RaceConditionWithFetchResolved'
+import ProfileForm from './hooks/useReducerHook/ProfileForm'
+import UsePreviousExample from './hooks/useRefHook/usePreviousExample';
+import RefDomExample from './hooks/useRefHook/useRefInput';
 
 function App() {
 
@@ -21,7 +24,10 @@ function App() {
       {/* <UseEffectCounterTwo /> */}
       {/* <UseEffectCounterThree /> */}
       {/* <RaceConditionWithFetch /> */}
-      <RaceConditionWithFetchResolved />
+      {/* <RaceConditionWithFetchResolved /> */}
+      {/* <ProfileForm /> */}
+      {/* <UsePreviousExample /> */}
+      <RefDomExample />
     </>
   )
 }

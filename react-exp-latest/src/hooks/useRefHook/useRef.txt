@@ -1,0 +1,22 @@
+A ref in react can be used for 2 things
+1] to store a value between re-renders.
+*ref is plain javascrit object.
+*ref.current when value is changed, no rerender is triggered.
+*Do not write or read ref.current during rendering, except for initialization. 
+This makes your component’s behavior unpredictable.
+*Changing a ref does not trigger a re-render. This means refs are perfect for 
+storing information that doesn’t affect the visual output of your component. For example, 
+if you need to store an interval ID and retrieve it later, you can put it in a ref. To update 
+the value inside the ref, you need to manually change its current property.
+PITFALLS
+*Do not write or read ref.current during rendering.
+*You can read or write refs from event handlers or effects instead.
+USE CASES:
+1] to store previous value of a prop or state.
+2] to store some cleanup value like interval id.
+
+
+
+
+
+2] to manipulate DOM of an element.
