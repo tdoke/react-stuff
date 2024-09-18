@@ -1,0 +1,40 @@
+1] doing change detection of state, prop in useEffects dependency array,
+   and modifying components state inside same effect.
+2] Adding objects to useEffects dependency array instead of primitives.
+3] cyclical looping of multiple useEffects in same component.
+useEffect(() => setA(), [B, C])
+useEffect(() => setD(), [A])
+useEffect(()=> setE(), [D])
+
+remedies:
+1] To move each useEffect to its own custom hook.
+https://kyleshevlin.com/use-encapsulation/
+2] To use useMemo, instead of useEffect.
+3] To use usePrvious hook to keep track of previous values of state/prop.
+4] I have had the mindset of "if you can do it without useEffect then try that first. Its its a 
+living nightmare, then resort back to useEffect.
+5] Not sure about what you're asking here, but this isn't a new discovery. There is an entire page on 
+the official new React docs dedicated to teaching developers to rely on useEffect only as an 
+"escape hatch" due to its tendency to be a code smell
+
+https://react.dev/learn/you-might-not-need-an-effect
+
+Also, last year's "Goodbye, useEffect: David Khourshid" conference talk basically outlined most 
+of your discoveries, emphasizing to rely on events + callbacks over effects for cleaner code. Which 
+unsurprisingly, many people took issue with (nobody likes hearing years of react code they've built is wrong)
+
+https://www.youtube.com/watch?v=HPoC-k7Rxwo
+
+So when should you use an Effect then?
+
+Treat is as a synchronization tool. Or more specifically, one you are forced to use to synchronize 
+some piece of React code with some piece of external or third party system that does not offer an 
+event-driven or "react-friendly" way of doing things.
+
+6] https://react.dev/learn/you-might-not-need-an-effect
+
+
+
+
+
+   
