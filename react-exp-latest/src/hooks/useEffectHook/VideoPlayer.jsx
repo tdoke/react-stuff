@@ -49,6 +49,6 @@ export default function App() {
  *  update the screen, ensuring the <video> tag is in the DOM with the right props. Then React will run your Effect. Finally, your
  *  Effect will call play() or pause() depending on the value of isPlaying.
     Press Play/Pause multiple times and see how the video player stays synchronized to the isPlaying value:
- * 
- * 
+ * 6] synchronizing react state with extrenal non react system/widget.
+ *  eg. synchronizing react state 'isPlaying', with non react <video/> tag.
 */
