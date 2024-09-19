@@ -11,6 +11,7 @@ import RaceConditionWithFetchResolved from './hooks/useEffectHook/RaceCondition/
 import ProfileForm from './hooks/useReducerHook/ProfileForm'
 import UsePreviousExample from './hooks/useRefHook/usePreviousExample';
 import RefDomExample from './hooks/useRefHook/useRefInput';
+import EffectAPExOne from './hooks/useEffectHook/antipatterns/EffectAPExOne';
 
 function App() {
 
@@ -27,7 +28,8 @@ function App() {
       {/* <RaceConditionWithFetchResolved /> */}
       {/* <ProfileForm /> */}
       {/* <UsePreviousExample /> */}
-      <RefDomExample />
+      {/* <RefDomExample /> */}
+      <EffectAPExOne />
     </>
   )
 }
