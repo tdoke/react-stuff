@@ -12,6 +12,7 @@ import ProfileForm from './hooks/useReducerHook/ProfileForm'
 import UsePreviousExample from './hooks/useRefHook/usePreviousExample';
 import RefDomExample from './hooks/useRefHook/useRefInput';
 import EffectAPExOne from './hooks/useEffectHook/antipatterns/EffectAPExOne';
+import VideoPlayer from './hooks/useEffectHook/VideoPlayer';
 
 function App() {
 
@@ -29,7 +30,8 @@ function App() {
       {/* <ProfileForm /> */}
       {/* <UsePreviousExample /> */}
       {/* <RefDomExample /> */}
-      <EffectAPExOne />
+      {/* <EffectAPExOne /> */}
+      <VideoPlayer />
     </>
   )
 }
