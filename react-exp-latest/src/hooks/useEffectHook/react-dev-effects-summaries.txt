@@ -1,0 +1,45 @@
+https://react.dev/learn/synchronizing-with-effects
+
+Unlike events, Effects are caused by rendering itself rather than a particular interaction.
+Effects let you synchronize a component with some external system (third-party API, network, etc).
+By default, Effects run after every render (including the initial one).
+React will skip the Effect if all of its dependencies have the same values as during the last render.
+You can’t “choose” your dependencies. They are determined by the code inside the Effect.
+Empty dependency array ([]) corresponds to the component “mounting”, i.e. being added to the screen.
+In Strict Mode, React mounts components twice (in development only!) to stress-test your Effects.
+If your Effect breaks because of remounting, you need to implement a cleanup function.
+React will call your cleanup function before the Effect runs next time, and during the unmount.
+
+https://react.dev/learn/you-might-not-need-an-effect
+If you can calculate something during render, you don’t need an Effect.
+To cache expensive calculations, add useMemo instead of useEffect.
+To reset the state of an entire component tree, pass a different key to it.
+To reset a particular bit of state in response to a prop change, set it during rendering.
+Code that runs because a component was displayed should be in Effects, the rest should be in events.
+If you need to update the state of several components, it’s better to do it during a single event.
+Whenever you try to synchronize state variables in different components, consider lifting state up.
+You can fetch data with Effects, but you need to implement cleanup to avoid race conditions.
+
+https://react.dev/learn/lifecycle-of-reactive-effects
+Components can mount, update, and unmount.
+Each Effect has a separate lifecycle from the surrounding component.
+Each Effect describes a separate synchronization process that can start and stop.
+When you write and read Effects, think from each individual Effect’s perspective (how to start and stop synchronization) rather than from the component’s perspective (how it mounts, updates, or unmounts).
+Values declared inside the component body are “reactive”.
+Reactive values should re-synchronize the Effect because they can change over time.
+The linter verifies that all reactive values used inside the Effect are specified as dependencies.
+All errors flagged by the linter are legitimate. There’s always a way to fix the code to not break the rules.
+
+https://react.dev/learn/separating-events-from-effects
+Event handlers run in response to specific interactions.
+Effects run whenever synchronization is needed.
+Logic inside event handlers is not reactive.
+Logic inside Effects is reactive.
+You can move non-reactive logic from Effects into Effect Events.
+Only call Effect Events from inside Effects.
+Don’t pass Effect Events to other components or Hooks.
+
+https://react.dev/learn/removing-effect-dependencies
+ 
+
+

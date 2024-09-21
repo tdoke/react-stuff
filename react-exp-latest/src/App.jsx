@@ -13,6 +13,7 @@ import UsePreviousExample from './hooks/useRefHook/usePreviousExample';
 import RefDomExample from './hooks/useRefHook/useRefInput';
 import EffectAPExOne from './hooks/useEffectHook/antipatterns/EffectAPExOne';
 import VideoPlayer from './hooks/useEffectHook/VideoPlayer';
+import ChatRoom from './hooks/useEffectHook/ChatRoom/';
 
 function App() {
 
@@ -31,7 +32,8 @@ function App() {
       {/* <UsePreviousExample /> */}
       {/* <RefDomExample /> */}
       {/* <EffectAPExOne /> */}
-      <VideoPlayer />
+      {/* <VideoPlayer /> */}
+      <ChatRoom />
     </>
   )
 }
