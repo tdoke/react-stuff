@@ -5,9 +5,10 @@ https://react.dev/learn/lifecycle-of-reactive-effects
 https://react.dev/learn/separating-events-from-effects
 
 when you need to synchrnize component with externl system or widget, where no user action / dom event 
-is invoved.
+is involved.
 in that case use useEffect hook. (i.e side effect is result of component rendering)
 Unlike events, Effects are caused by rendering itself rather than a particular interaction.
+By default, Effects run after every render (including the initial one).
 
 eg. 
 1] fetch data on component mount.
