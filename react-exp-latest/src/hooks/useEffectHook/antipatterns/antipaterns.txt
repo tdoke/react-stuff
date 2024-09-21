@@ -37,17 +37,14 @@ event-driven or "react-friendly" way of doing things.
 eg. on submit btn click, save form to backend
 
 8] when you need to synchrnize component with externl system or widget, where no user action / dom event is invoved.
-in that case use useEffect hook
+in that case use useEffect hook. (i.e side effect is result of component rendering)
+Unlike events, Effects are caused by rendering itself rather than a particular interaction.
+
 eg. 
 1] fetch data on component mount.
 2] when chat component is visible in UI, connect to chatbot server.
 3] interate react with browser api to pause/play video.
 
-9] mmost imp*** 
-https://react.dev/learn/synchronizing-with-effects
-https://react.dev/learn/you-might-not-need-an-effect
-https://react.dev/learn/lifecycle-of-reactive-effects
-https://react.dev/learn/separating-events-from-effects
 
 
 

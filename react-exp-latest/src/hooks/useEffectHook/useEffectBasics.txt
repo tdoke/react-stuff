@@ -1,0 +1,33 @@
+1] mmost imp*** 
+https://react.dev/learn/synchronizing-with-effects
+https://react.dev/learn/you-might-not-need-an-effect
+https://react.dev/learn/lifecycle-of-reactive-effects
+https://react.dev/learn/separating-events-from-effects
+
+when you need to synchrnize component with externl system or widget, where no user action / dom event 
+is invoved.
+in that case use useEffect hook. (i.e side effect is result of component rendering)
+Unlike events, Effects are caused by rendering itself rather than a particular interaction.
+
+eg. 
+1] fetch data on component mount.
+2] when chat component is visible in UI, connect to chatbot server.
+3] interate react with browser api to pause/play video.
+
+2] effect lifecycle has 2 phases 
+   1] start synchronization --> body
+   2] stop synchronization --> return statement
+
+3] while thinking of effect dont think of component lifecycle.
+4] dpendency array [], if react wants to re-synchronize an effect when any of the
+reactive value changes (prop,state, values derived from prop/state).
+We need to mention that in effects dependency array.
+[] ------> effect will synchrnize only once on component mount.
+[roomId] ------> effect will re-synchronize when roomId changes
+[roomId, serverUrl] ------> effect will re-synchronize when roomId or serverUrl changes
+5] Effects “react” to reactive values, mentioned in their depedency array[]
+6] When you write and read Effects, think from each individual Effect’s perspective 
+(how to start and stop synchronization) rather than from the 
+component’s perspective (how it mounts, updates, or unmounts).
+7] In Strict Mode, React mounts components twice (in development only!) to stress-test your Effects.
+
