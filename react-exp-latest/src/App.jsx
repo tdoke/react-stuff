@@ -14,6 +14,7 @@ import RefDomExample from './hooks/useRefHook/useRefInput';
 import EffectAPExOne from './hooks/useEffectHook/antipatterns/EffectAPExOne';
 import VideoPlayer from './hooks/useEffectHook/VideoPlayer';
 import ChatRoom from './hooks/useEffectHook/ChatRoom/';
+import ChatRoomWithEffectEvent from './hooks/useEffectHook/ChatRoomWithEffectEvent/';
 
 function App() {
 
@@ -33,7 +34,8 @@ function App() {
       {/* <RefDomExample /> */}
       {/* <EffectAPExOne /> */}
       {/* <VideoPlayer /> */}
-      <ChatRoom />
+      {/* <ChatRoom /> */}
+      <ChatRoomWithEffectEvent />
     </>
   )
 }
