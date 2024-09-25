@@ -15,6 +15,8 @@ import EffectAPExOne from './hooks/useEffectHook/antipatterns/EffectAPExOne';
 import VideoPlayer from './hooks/useEffectHook/VideoPlayer';
 import ChatRoom from './hooks/useEffectHook/ChatRoom/';
 import ChatRoomWithEffectEvent from './hooks/useEffectHook/ChatRoomWithEffectEvent/';
+import OnlineStatus from './hooks/useCustomHooks/OnlineStatus/';
+import FormInput from './hooks/useCustomHooks/FormInput/';
 
 function App() {
 
@@ -35,7 +37,9 @@ function App() {
       {/* <EffectAPExOne /> */}
       {/* <VideoPlayer /> */}
       {/* <ChatRoom /> */}
-      <ChatRoomWithEffectEvent />
+      {/* <ChatRoomWithEffectEvent /> */}
+      {/* <OnlineStatus/> */}
+      <FormInput/>
     </>
   )
 }
