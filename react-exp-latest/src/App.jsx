@@ -17,6 +17,7 @@ import ChatRoom from './hooks/useEffectHook/ChatRoom/';
 import ChatRoomWithEffectEvent from './hooks/useEffectHook/ChatRoomWithEffectEvent/';
 import OnlineStatus from './hooks/useCustomHooks/OnlineStatus/';
 import FormInput from './hooks/useCustomHooks/FormInput/';
+import ChatRoomWithCustomHook from './hooks/useCustomHooks/ChatRoomWithCustomHook/';
 
 function App() {
 
@@ -39,7 +40,8 @@ function App() {
       {/* <ChatRoom /> */}
       {/* <ChatRoomWithEffectEvent /> */}
       {/* <OnlineStatus/> */}
-      <FormInput/>
+      {/* <FormInput/> */}
+      <ChatRoomWithCustomHook />
     </>
   )
 }

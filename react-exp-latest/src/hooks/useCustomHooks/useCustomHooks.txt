@@ -43,4 +43,31 @@ The behavior before and after extracting a custom Hook is identical.
 When you need to share the state itself between multiple components, lift it up 
 and pass it down instead.
 
+5] Passing reactive values between Hooks 
+The code inside your custom Hooks will re-run during every re-render of your component. This is why, 
+like components, custom Hooks need to be pure. Think of custom Hooks’ 
+code as part of your component’s body!
+Because custom Hooks re-render together with your component, they always receive the latest props and state.
+
+6]Every time your ChatRoom component re-renders, it passes the latest roomId and serverUrl 
+to your Hook. This is why your Effect re-connects to the chat whenever their values are 
+different after a re-render. (If you ever worked with audio or video processing software, 
+chaining Hooks like this might remind you of chaining visual or audio effects. It’s as if 
+the output of useState “feeds into” the input of the useChatRoom.)
+
+7]Custom Hooks help you migrate to better patterns 
+Effects are an “escape hatch”: you use them when you need to “step outside React” and when there is no better built-in 
+solution for your use case. With time, the React team’s goal is to reduce the number of the Effects in your app to the minimum by 
+providing more specific solutions to more specific problems. Wrapping your Effects in custom Hooks makes it easier to upgrade your 
+code when these solutions become available.
+
+8] This is another reason for why wrapping Effects in custom Hooks is often beneficial:
+You make the data flow to and from your Effects very explicit.
+You let your components focus on the intent rather than on the exact implementation of your Effects.
+When React adds new features, you can remove those Effects without changing any of your components
+
+
+
+
+
 
