@@ -19,6 +19,12 @@ import OnlineStatus from './hooks/useCustomHooks/OnlineStatus/';
 import FormInput from './hooks/useCustomHooks/FormInput/';
 import ChatRoomWithCustomHook from './hooks/useCustomHooks/ChatRoomWithCustomHook/';
 import EmpDetailsContxt from './context/EmpDetailsContext/';
+import EmployeeFormAndListWithContext from './context/context-as-state/';
+import { EmployeeContainerWithList, EmployeeContainerWithTable } from './children-api/EmployeeContainer/';
+import BasicHeader from './children-api/basic/index';
+import ExampleOne from './children-api/ChildrenRendering/ExampleOne';
+import ExampleTwo from './children-api/ChildrenRendering/ExampleTwo';
+import PortalExample from './portals/Parent';
 
 function App() {
 
@@ -43,7 +49,15 @@ function App() {
       {/* <OnlineStatus/> */}
       {/* <FormInput/> */}
       {/* <ChatRoomWithCustomHook /> */}
-      <EmpDetailsContxt />
+      {/* <EmpDetailsContxt /> */}
+      {/* <EmployeeFormAndListWithContext /> */}
+      {/* <EmployeeContainerWithList /> 
+      <EmployeeContainerWithTable /> */}
+      {/* <BasicHeader.HeaderWithHardBoundNavigation />
+      <BasicHeader.HeaderWithChildrenProp /> */}
+      {/* <ExampleOne /> */}
+      {/* <ExampleTwo /> */}
+      <PortalExample />
     </>
   )
 }

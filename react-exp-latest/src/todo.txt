@@ -1,32 +1,28 @@
-1] react basics
+1] react basics--
 jsx, react-render, component lifecycle, reactApi, reactDomApi, reconciliation-diffing
 jeff erikson, dan abramov articles on functional components
-2] react state management
+2] react state management--
 state, props, context, redux
-3] hooks
+3] hooks--
 react built in hooks
 customized hooks
 hooks antipatterns and patterns
 how to write reusable hooks
 hooks and component lifecycle
-4] react components composition patterns
-me, george moller
-5] hoc and render props and hooks
-6] refs
-ref use cases, patterns, antipatterns
-7] portals
-use cases, patterns, antipatterns
+4] hoc and render props and hooks
+5] children api--
+6] refs--
+7] portals--
 8] suspense
-use cases, patterns, antipatterns
-9] error boundary
-use cases, patterns, antipatterns
-10] componet lazy loading, code splitting, reducing app bundle size.
-11] profiler
-12] identfying costly/slow components and improving their speed.
-13] memoization 
-use cases, patterns, antipatterns
-14] unit testing react components
+9] componet lazy loading, code splitting, reducing app bundle size.
+10] error boundary
+11] react events
+12] react components composition patterns
+me, george moller
+13] profiler
+14] identfying costly/slow components and improving their speed.
+15] memoization 
+16] unit testing react components
 jest, react-testing-library
-15] react events
-16] react forms
+17] react forms
 
