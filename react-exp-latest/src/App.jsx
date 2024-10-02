@@ -25,6 +25,7 @@ import BasicHeader from './children-api/basic/index';
 import ExampleOne from './children-api/ChildrenRendering/ExampleOne';
 import ExampleTwo from './children-api/ChildrenRendering/ExampleTwo';
 import PortalExample from './portals/Parent';
+import SuspenseExample from './suspense-lazy';
 
 function App() {
 
@@ -57,7 +58,8 @@ function App() {
       <BasicHeader.HeaderWithChildrenProp /> */}
       {/* <ExampleOne /> */}
       {/* <ExampleTwo /> */}
-      <PortalExample />
+      {/* <PortalExample /> */}
+      <SuspenseExample />
     </>
   )
 }
