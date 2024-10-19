@@ -1,0 +1,3 @@
+10/18] react-render,reconciliation-diffing, reactAPI, reactDomApi, react 18 new features.
+10/19] children-api, hoc, render props, hoc vs render props vs hooks
+ 

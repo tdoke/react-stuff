@@ -1,4 +1,5 @@
 import './App.css'
+import TimeTicker from './jsx/TimeTicker';
 import Counter  from './hooks/useStateHook/Counter'
 import { RenderListWithoutKeys } from './react-render/RenderListWithoutKeys'
 import { RenderOnPropsChange } from './react-render/RenderOnPropsChange'
@@ -26,11 +27,15 @@ import ExampleOne from './children-api/ChildrenRendering/ExampleOne';
 import ExampleTwo from './children-api/ChildrenRendering/ExampleTwo';
 import PortalExample from './portals/Parent';
 import SuspenseExample from './suspense-lazy';
+import HocEx from './hoc-hooks-renderprops/hoc/';
+import HookEg from './hoc-hooks-renderprops/hooks/';
+import RenderPropEx from './hoc-hooks-renderprops/render-prop/';
 
 function App() {
 
   return (
     <>
+      {/* <TimeTicker /> */}
       {/* <RenderOnStateChange /> */}
       {/* <RenderOnPropsChange /> */}
       {/* <RenderListWithoutKeys /> */}
@@ -59,7 +64,12 @@ function App() {
       {/* <ExampleOne /> */}
       {/* <ExampleTwo /> */}
       {/* <PortalExample /> */}
-      <SuspenseExample />
+      {/* <SuspenseExample /> */}
+      <>
+      <HocEx/>
+      <RenderPropEx/>
+      <HookEg/>
+      </>
     </>
   )
 }

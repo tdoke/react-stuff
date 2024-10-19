@@ -13,7 +13,7 @@ hooks and component lifecycle
 5] children api--
 6] refs--
 7] portals--
-8] suspense
+8] suspense--
 9] componet lazy loading, code splitting, reducing app bundle size.
 10] error boundary
 11] react events
