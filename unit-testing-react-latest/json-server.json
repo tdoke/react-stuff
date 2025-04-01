@@ -1,0 +1,7 @@
+{
+  "port": 3001,
+  "watch": true,
+  "host": "localhost",
+  "middlewares": "./node_modules/json-server/lib/server/defaults.js",
+  "cors": true
+} 
